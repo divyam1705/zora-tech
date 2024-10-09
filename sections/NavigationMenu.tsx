@@ -31,21 +31,21 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
         <NavigationMenu className=" ">
             <NavigationMenuList className={cn("gap-2", className)}>
                 <NavigationMenuItem>
-                    <Link href="/docs" legacyBehavior passHref>
+                    <Link href="/" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                             Home
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="/docs" legacyBehavior passHref>
+                    <Link href="/services" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                             Services
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="/docs" legacyBehavior passHref>
+                    <Link href="/about" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                             About Us
                         </NavigationMenuLink>

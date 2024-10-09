@@ -1,7 +1,5 @@
-import Logo from "@/app/assets/logo.svg"
-import { Button } from "@/components/ui/button";
+import Logo from "@/assets/logo.svg"
 import Image from "next/image";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { NavigationMenuHelper } from "./NavigationMenu";
 import { SliderMenu } from "./SliderMenu";
 

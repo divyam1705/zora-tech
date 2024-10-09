@@ -1,9 +1,17 @@
-import { GlobeDemo } from "@/components/globe-demo";
+"use client"
 import { Button } from "@/components/ui/button";
 import { Cover } from "@/components/ui/cover";
 import { World } from "@/components/ui/globe";
+import dynamic from "next/dynamic";
+
+
 import { sampleArcs, globeConfig } from "@/data/globe-config";
 export const Hero = () => {
+
+    const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
+        ssr: false,
+    });
+
     return (
         <section className="pt-8 pb-20 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#4c64bb,#EAEEFE_66%)]">
             <div className="flex justify-center px-6 md:px-12 lg:px-[8rem] mt-3">
@@ -33,11 +41,7 @@ export const Hero = () => {
                             <World data={sampleArcs} globeConfig={globeConfig} />
                         </div>
                     </div>
-
-
-
                 </div>
-
             </div>
         </section>
     );

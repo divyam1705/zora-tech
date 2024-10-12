@@ -6,6 +6,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@layer components {
+  .logo-ticker-image {
+    @apply h-14 mx-6 w-auto opacity-80;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -13,12 +13,12 @@ export const Hero = () => {
     });
 
     return (
-        <section className="pt-8 pb-20 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#4c64bb,#EAEEFE_66%)]">
+        <section className="pt-8 pb-20 md:pt-5 md:pb-[6rem] bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#4c64bb,#EAEEFE_66%)]">
             <div className="flex justify-center px-6 md:px-12 lg:px-[8rem] mt-3">
                 <div className="">
                     <div className="flex flex-col md:flex-row justify-between">
                         <div className="md:max-w-[55vw] md:text-wrap">
-                            <h1 className="text-5xl md:text-6xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-6 py-1">
+                            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-6 py-1">
                                 Empowering Your Data,
                                 <Cover className="cursor-pointer">
                                     Accelerating
@@ -31,7 +31,7 @@ export const Hero = () => {
                                 we provide end-to-end solutions including data profiling,
                                 ETL processes, and advanced analytics. With over <strong>30+ successful
                                     global deployments</strong> and a team of industry experts, ZTI delivers cutting-edge, tailored solutions
-                                that drive your business forward. ZTI has a global presence with strategic locations in the USA, Canada, and India.
+                                that drive your business forward.
                             </p>
                             <div className="flex gap-1 items-center mt-[30px]">
                                 <Button size={"lg"}>Contact Us</Button>

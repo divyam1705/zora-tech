@@ -364,7 +364,7 @@ export const sampleArcs = [
 ];
 export const globeConfig = {
   pointSize: 4,
-  globeColor: "#062056",
+  globeColor: "#132675", //#192f89, 132675
   showAtmosphere: true,
   atmosphereColor: "#FFFFFF",
   atmosphereAltitude: 0.1,

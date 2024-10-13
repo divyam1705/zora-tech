@@ -15,7 +15,7 @@ export const Header = () => {
                     <div className="flex items-center justify-between">
                         <div className="flex gap-4 items-center">
                             <Image className="" src={Logo} alt="Zora Logo" height={40} width={40} />
-                            <div className=" text-black text-center text-lg font-bold border-[#222]/10 px-3 py-1  tracking-tighter text-transparent bg-clip-text">
+                            <div className=" text-black text-center text-lg font-bold border-[#222]/10 px-3 py-1  tracking-tighter bg-clip-text">
                                 Zora Technologies
                             </div>
                         </div>

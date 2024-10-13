@@ -33,7 +33,7 @@ export const LogoTicker = () => {
     ];
 
     return <div>
-        <div className='w-full py-8 md:py-12'>
+        <div className='w-full py-12'>
             <div className='flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]'>
                 <motion.div
                     className='flex gap-14 flex-none pr-14'

@@ -1,8 +1,8 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import { Cover } from "@/components/ui/cover";
-import { World } from "@/components/ui/globe";
 import dynamic from "next/dynamic";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 
 import { sampleArcs, globeConfig } from "@/data/globe-config";
@@ -34,7 +34,10 @@ export const Hero = () => {
                                 that drive your business forward.
                             </p>
                             <div className="flex gap-1 items-center mt-[30px]">
-                                <Button size={"lg"}>Contact Us</Button>
+                                <Button className="group" size={"lg"}>
+                                    Get Started Today
+                                    <FaArrowRightLong className="ml-3 transition-transform duration-300 group-hover:translate-x-2" />
+                                </Button>
                             </div>
                         </div>
                         <div className=" h-[24rem] m-[1.5rem] !z-0 cursor-pointer">

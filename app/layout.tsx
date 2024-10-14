@@ -1,3 +1,5 @@
+import { Footer } from '@/sections/Footer';
+import { Header } from '@/sections/Header';
 import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans } from "next/font/google"
@@ -18,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={twMerge(dmSans.className, "antialiased bg-[#EAEEFE]")}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

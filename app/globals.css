@@ -20,7 +20,11 @@ body {
   }
 
   .section-description {
-    @apply text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E];
+    @apply text-center text-lg md:text-[22px]  leading-[30px] tracking-tight text-[#010D3E];
+  }
+
+  .section-text {
+    @apply text-[15px] leading-[30px] tracking-tight text-[#010D3E];
   }
 
   .card {

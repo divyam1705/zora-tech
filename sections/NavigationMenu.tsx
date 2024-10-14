@@ -1,6 +1,8 @@
 "use client"
 
-import * as React from "react"
+import * as React from "react";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
+import { services } from "@/data/services";
 import Link from "next/link"
 import {
     Sheet,
@@ -27,10 +29,52 @@ interface NavigationMenuProps {
     className?: string
 }
 export function NavigationMenuHelper({ className }: NavigationMenuProps) {
+
+    const components: { title: string; href: string; description: string }[] = [
+        {
+            title: "Alert Dialog",
+            href: "/docs/primitives/alert-dialog",
+            description:
+                "A modal dialog that interrupts the user with important content and expects a response.",
+        },
+        {
+            title: "Hover Card",
+            href: "/docs/primitives/hover-card",
+            description:
+                "For sighted users to preview content available behind a link.",
+        },
+        {
+            title: "Progress",
+            href: "/docs/primitives/progress",
+            description:
+                "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+        },
+        {
+            title: "Scroll-area",
+            href: "/docs/primitives/scroll-area",
+            description: "Visually or semantically separates content.",
+        },
+        {
+            title: "Tabs",
+            href: "/docs/primitives/tabs",
+            description:
+                "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+        },
+        {
+            title: "Tooltip",
+            href: "/docs/primitives/tooltip",
+            description:
+                "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+        },
+    ]
+
+    const [active, setActive] = React.useState<string | null>(null);
+
+
     return (
-        <NavigationMenu className=" ">
+        <NavigationMenu onMouseLeave={() => setActive(null)} className=" ">
             <NavigationMenuList className={cn("gap-2", className)}>
-                <NavigationMenuItem>
+                <NavigationMenuItem onMouseEnter={() => setActive("home")}>
                     <Link href="/" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                             Home
@@ -38,24 +82,37 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="/services" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                            Services
-                        </NavigationMenuLink>
-                    </Link>
+                    <div >
+                        <MenuItem setActive={setActive} active={active} item="Services">
+                            <div onClick={() => setActive(null)} className="  text-sm grid grid-cols-1 md:grid-cols-2 gap-10  md:py-2 ">
+                                {services.map((service) => (
+                                    <ProductItem
+                                        key={service.name}
+                                        title={service.name}
+                                        href={service.href}
+                                        src={service.src}
+                                        description={service.description}
+                                    />
+                                ))}
+                            </div>
+                        </MenuItem>
+                    </div>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                <NavigationMenuItem onMouseEnter={() => setActive("about")}>
                     <Link href="/about" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                             About Us
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <Button size={"lg"} className="ml-2">Contact Us</Button>
-                </NavigationMenuItem>
+                <Link onMouseEnter={() => setActive("contact")} href="/contact" legacyBehavior passHref>
+                    <NavigationMenuItem>
+                        <Button size={"lg"} className="ml-2">Contact Us</Button>
+                    </NavigationMenuItem>
+                </Link>
             </NavigationMenuList>
         </NavigationMenu>
+        // <Navbar />
     )
 }
 
@@ -84,3 +141,61 @@ const ListItem = React.forwardRef<
     )
 })
 ListItem.displayName = "ListItem"
+
+
+function Navbar({ className }: { className?: string }) {
+    const [active, setActive] = React.useState<string | null>(null);
+    return (
+        <div
+            className={cn("inset-x-0 mx-auto z-50", className)}
+        >
+            <Menu setActive={setActive}>
+                <MenuItem setActive={setActive} active={active} item="Services">
+                    <div className="flex flex-col space-y-4 text-sm">
+                        <HoveredLink href="/web-dev">Web Development</HoveredLink>
+                        <HoveredLink href="/interface-design">Interface Design</HoveredLink>
+                        <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
+                        <HoveredLink href="/branding">Branding</HoveredLink>
+                    </div>
+                </MenuItem>
+                <MenuItem setActive={setActive} active={active} item="Products">
+                    <div className="  text-sm grid grid-cols-2 gap-10 p-4 ">
+                        {services.map((service) => (
+                            <ProductItem
+                                key={service.name}
+                                title={service.name}
+                                href={service.href}
+                                src={service.src}
+                                description={service.description}
+                            />
+                        ))}
+                        <ProductItem
+                            title="Algochurn"
+                            href="https://algochurn.com"
+                            src="https://assets.aceternity.com/demos/algochurn.webp"
+                            description="Prepare for tech interviews like never before."
+                        />
+                        <ProductItem
+                            title="Tailwind Master Kit"
+                            href="https://tailwindmasterkit.com"
+                            src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+                            description="Production ready Tailwind css components for your next project"
+                        />
+                        <ProductItem
+                            title="Moonbeam"
+                            href="https://gomoonbeam.com"
+                            src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+                            description="Never write from scratch again. Go from idea to blog in minutes."
+                        />
+                        <ProductItem
+                            title="Rogue"
+                            href="https://userogue.com"
+                            src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+                            description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+                        />
+                    </div>
+                </MenuItem>
+            </Menu>
+        </div>
+    );
+}

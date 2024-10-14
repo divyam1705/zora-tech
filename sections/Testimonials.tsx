@@ -72,7 +72,7 @@ const secondColumn = testimonials.slice(3, 6);
 const thirdColumn = testimonials.slice(6, 9);
 
 export const Testimonials = () => {
-    return <section >
+    return <section>
         <div >
             <div className="section-heading">
                 <div className="flex justify-center">

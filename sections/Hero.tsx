@@ -6,6 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 
 import { sampleArcs, globeConfig } from "@/data/globe-config";
+import Link from "next/link";
 export const Hero = () => {
 
     const World = dynamic(() => import("@/components/ui/globe").then((m) => m.World), {
@@ -34,10 +35,12 @@ export const Hero = () => {
                                 that drive your business forward.
                             </p>
                             <div className="flex gap-1 items-center mt-[30px]">
-                                <Button className="group" size={"lg"}>
-                                    Get Started Today
-                                    <FaArrowRightLong className="ml-3 transition-transform duration-300 group-hover:translate-x-2" />
-                                </Button>
+                                <Link href="/contact" legacyBehavior passHref>
+                                    <Button className="group" size={"lg"}>
+                                        Get Started Today
+                                        <FaArrowRightLong className="ml-3 transition-transform duration-300 group-hover:translate-x-2" />
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                         <div className=" h-[24rem] m-[1.5rem] !z-0 cursor-pointer">

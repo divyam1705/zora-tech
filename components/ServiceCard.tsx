@@ -29,7 +29,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                 </CardContent>
                 <CardFooter className="w-full ">
                     <Link className="w-full" href={service.href}>
-                        <Button className="w-full">Learn More</Button>
+                        <Button size={"lg"} className="w-full">Learn More</Button>
                     </Link>
                 </CardFooter>
             </Card>

@@ -4,7 +4,7 @@ import Location from './components/location';
 
 const ContactPage: React.FC = () => {
     return (
-        <div className='   bg-white'>
+        <div className=' bg-white'>
             <div className='pt-8 pb-20 md:pt-5 md:pb-[6rem] bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#4c64bb,#EAEEFE_66%)]'>
                 <div className="section-heading px-3">
                     <h2 className="section-title mt-5">

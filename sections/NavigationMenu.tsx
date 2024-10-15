@@ -84,7 +84,7 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
                 <NavigationMenuItem>
                     <div >
                         <MenuItem setActive={setActive} active={active} item="Services">
-                            <div onClick={() => setActive(null)} className="  text-sm grid grid-cols-1 md:grid-cols-2 gap-10  md:py-2 ">
+                            <div onClick={() => setActive(null)} className="  text-sm grid grid-cols-1  gap-6 md:gap-4  md:py-2 ">
                                 {services.map((service) => (
                                     <ProductItem
                                         key={service.name}

@@ -137,7 +137,7 @@ export const services = [
       },
     },
     description:
-      "Maintain consistent, accurate, and centralized master data across the organization.",
+      "Maintain consistent and centralized master data across the organization.",
     bulletPoints: [
       "Single source of truth for critical data",
       "Data governance and quality control",

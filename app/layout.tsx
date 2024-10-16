@@ -1,9 +1,12 @@
+
 import { Footer } from '@/sections/Footer';
 import { Header } from '@/sections/Header';
 import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans } from "next/font/google"
 import { twMerge } from "tailwind-merge";
+import { useRef } from 'react';
+import { ScrollProvider } from './ScrollContext';
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -17,12 +20,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
       <body className={twMerge(dmSans.className, "antialiased bg-[#EAEEFE]")}>
-        <Header />
-        {children}
-        <Footer />
+        <ScrollProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ScrollProvider>
       </body>
     </html>
   );

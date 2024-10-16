@@ -7,6 +7,7 @@ import avatar6 from "@/assets/avatars/avatar-6.png";
 import avatar7 from "@/assets/avatars/avatar-7.png";
 import avatar8 from "@/assets/avatars/avatar-8.png";
 import avatar9 from "@/assets/avatars/avatar-9.png";
+import AnimatedGradientText from "@/components/ui/animated-gradient-text";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -76,7 +77,16 @@ export const Testimonials = () => {
         <div >
             <div className="section-heading">
                 <div className="flex justify-center">
-                    <div className="tag">Testimonials</div>
+                    <AnimatedGradientText className="">
+                        ✒️<hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
+                        <span
+                            className={cn(
+                                `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+                            )}
+                        >
+                            Testimonials
+                        </span>
+                    </AnimatedGradientText>
                 </div>
                 <h2 className="section-title mt-5">
                     What Our Clients Are Saying

@@ -28,7 +28,7 @@ export const services = [
     longerDescription:
       "Our S/4 HANA Data Migration service helps businesses transition from legacy systems to SAP S/4 HANA with minimal disruption. We ensure a seamless, secure, and compliant migration process that maintains the integrity of your data throughout the entire lifecycle. Our team of experts works closely with you to ensure that your business operations are not interrupted during the migration, and that you experience a smooth transition to the latest SAP technologies.",
     longerBulletPoints: {
-      "Comprehensive Migration Process": {
+      "Comprehensive Migration": {
         icon: "FiSettings",
         description:
           "We manage every step of the migration, from initial planning and data extraction to loading and validating data in SAP S/4 HANA.",

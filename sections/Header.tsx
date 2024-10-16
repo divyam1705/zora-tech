@@ -6,8 +6,11 @@ import { SliderMenu } from "./SliderMenu";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Link from "next/link";
+import { useScrollContext } from "@/app/ScrollContext";
 
 export const Header = () => {
+
+
     return (
         <header className="sticky top-0 backdrop-blur-sm z-50">
             <div className="flex items-center justify-center py-5 px-4">

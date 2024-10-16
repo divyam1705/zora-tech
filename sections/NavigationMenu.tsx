@@ -24,6 +24,7 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
+import { useScrollContext } from "@/app/ScrollContext";
 
 interface NavigationMenuProps {
     className?: string
@@ -70,6 +71,7 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
 
     const [active, setActive] = React.useState<string | null>(null);
 
+    const { scrollToSection } = useScrollContext();
 
     return (
         <NavigationMenu onMouseLeave={() => setActive(null)} className=" ">
@@ -83,7 +85,7 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <div >
-                        <MenuItem setActive={setActive} active={active} item="Services">
+                        <MenuItem onClick={() => scrollToSection("service")} setActive={setActive} active={active} item="Services">
                             <div onClick={() => setActive(null)} className="  text-sm grid grid-cols-1  gap-6 md:gap-4  md:py-2 ">
                                 {services.map((service) => (
                                     <ProductItem
@@ -106,9 +108,9 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
                     </Link>
                 </NavigationMenuItem>
                 <Link onMouseEnter={() => setActive("contact")} href="/contact" legacyBehavior passHref>
-                    <NavigationMenuItem>
-                        <Button size={"lg"} className="ml-2">Contact Us</Button>
-                    </NavigationMenuItem>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        Contact
+                    </NavigationMenuLink>
                 </Link>
             </NavigationMenuList>
         </NavigationMenu>

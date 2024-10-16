@@ -2,6 +2,7 @@ import { services } from '@/data/services';
 import React from 'react';
 import Banner from './components/Banner';
 import BulletsSection from './components/BulletsSection';
+import GradualSpacing from '@/components/ui/gradual-spacing';
 
 
 interface ServicePageProps {
@@ -29,9 +30,10 @@ const ServicePage: React.FC<ServicePageProps> = ({ params: { serviceName } }) =>
                 <div className='mt-10 flex justify-center px-6 md:px-16  '>
                     <div className=" w-full flex flex-col md:flex-row items-center md:items-start md:justify-between gap-12">
                         <div className='flex flex-col items-start  md:items-start md:w-6/12 gap-6 '>
-                            <h2 className=" section-title !text-4xl md:!text-5xl py-1">
-                                {name}
-                            </h2>
+                            <GradualSpacing
+                                className="section-title !text-4xl md:!text-5xl py-1"
+                                text={name}
+                            />
                             <div className='text-start section-description text-lg md:text-xl py-1'>
                                 {description}
                             </div>

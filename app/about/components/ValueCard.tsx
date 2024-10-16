@@ -2,15 +2,15 @@ import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/
 import React from 'react';
 import { IconType } from 'react-icons/lib';
 
-interface BulletCardProps {
+interface ValueCardProps {
     heading: string;
     description: string;
     Icon: IconType;
 }
 
-const BulletCard: React.FC<BulletCardProps> = ({ heading, description, Icon }) => {
+const ValueCard: React.FC<ValueCardProps> = ({ heading, description, Icon }) => {
     return (
-        <Card className="cursor-pointer w-[22rem] h-64 shadow-xl transform transition-transform hover:-translate-y-2">
+        <Card className="cursor-pointer w-[15rem] h-64 shadow-xl transform transition-transform hover:-translate-y-2">
             <CardHeader className='flex flex-col items-center gap-3'>
                 <div className='flex justify-center items-center'>
                     <Icon size={30} className='section-text' />
@@ -24,4 +24,4 @@ const BulletCard: React.FC<BulletCardProps> = ({ heading, description, Icon }) =
     );
 };
 
-export default BulletCard;
+export default ValueCard;

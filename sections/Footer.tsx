@@ -1,8 +1,11 @@
+"use client";
+import { useScrollContext } from '@/app/ScrollContext';
 import logo from '@/assets/zora-light.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export const Footer = () => {
+    const { scrollToSection } = useScrollContext();
     return (
         <footer className='bg-black text-[#BCBCBC] text-sm py-10 text-center'>
             <div>
@@ -12,7 +15,7 @@ export const Footer = () => {
                 </div>
                 <nav className='flex flex-col gap-6 mt-6 md:flex-row md:justify-center'>
                     <Link className=' hover:text-white transition-all' href="/">Home</Link>
-                    <Link className=' hover:text-white transition-all' href="/services">Services</Link>
+                    <div onClick={() => scrollToSection("service")} className=' hover:text-white cursor-pointer transition-all'>Services</div>
                     <Link className=' hover:text-white transition-all' href="/about">About</Link>
                     <Link className=' hover:text-white transition-all' href="/contact">Contact</Link>
                 </nav>

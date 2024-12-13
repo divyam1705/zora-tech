@@ -1,5 +1,5 @@
 "use client";
-import Logo from "@/assets/logo.svg"
+import Logo from "@/assets/zora-dark.svg"
 import Image from "next/image";
 import { NavigationMenuHelper } from "./NavigationMenu";
 import { SliderMenu } from "./SliderMenu";
@@ -18,7 +18,7 @@ export const Header = () => {
                     <div className="flex items-center justify-between">
                         <Link href="/">
                             <div className="flex gap-4 items-center">
-                                <Image className="" src={Logo} alt="Zora Logo" height={40} width={40} />
+                                <Image className="rounded-md" src={Logo} alt="Zora Logo" height={40} width={40} />
                                 <div className=" text-black text-center text-lg font-bold border-[#222]/10 px-3 py-1  tracking-tighter bg-clip-text">
                                     Zora Technologies
                                 </div>

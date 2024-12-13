@@ -1,4 +1,4 @@
-import logo from '@/assets/logo.svg';
+import logo from '@/assets/zora-light.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,8 +6,9 @@ export const Footer = () => {
     return (
         <footer className='bg-black text-[#BCBCBC] text-sm py-10 text-center'>
             <div>
-                <div className="inline-flex relative before:w-full before:content-[''] before:top-2 before:bottom-0 before:blur before:bg-[linear-gradient(to_right,#FFDD9B,#2FD8FE,#df4e4e,#5b0303,#FFDD9B)] before:absolute">
-                    <Image className='relative' src={logo} alt="Zora Technologies Inc." width={45} height={45} />
+                {/* before:w-full before:content-[''] before:top-2 before:bottom-0 before:blur before:bg-[linear-gradient(to_right,#FFDD9B,#2FD8FE,#df4e4e,#5b0303,#FFDD9B)] before:absolute */}
+                <div className="inline-flex relative">
+                    <Image className='relative bg-white rounded-md shadow-2xl' src={logo} alt="Zora Technologies Inc." width={45} height={45} />
                 </div>
                 <nav className='flex flex-col gap-6 mt-6 md:flex-row md:justify-center'>
                     <Link className=' hover:text-white transition-all' href="/">Home</Link>

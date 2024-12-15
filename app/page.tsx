@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="bg-white">
       <Hero />
-      <LogoTicker />
+      {/* <LogoTicker /> */}
       <Services ref={serviceRef} />
       <Testimonials />
     </div>

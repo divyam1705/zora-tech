@@ -59,7 +59,7 @@ const AboutPage: React.FC = () => {
 
             </div>
             <ValuesSection values={values} />
-            <TeamSection team={team} />
+            {/* <TeamSection team={team} /> */}
         </div>
     );
 };

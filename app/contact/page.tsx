@@ -25,12 +25,12 @@ const ContactPage: React.FC = () => {
                             </div>
                             <div className='section-text text-opacity-70'>
                                 Email: &nbsp;
-                                <a href="mailto:support@zora-tech.com" className="underline">
-                                    support@zora-tech.com
+                                <a href="mailto:sukhraj@zoratechinc.com" className="underline">
+                                    sukhraj@zoratechinc.com
                                 </a>
                             </div>
                             <div className='section-text text-opacity-70'>
-                                USA Office:&nbsp; <a className=" underline" href="tel:+11234567890">(123) 456-7890</a>
+                                USA Office:&nbsp; <a className=" underline" href="tel:+15714818861">(571) 481-8861</a>
                             </div>
                         </div>
                         <div className='flex justify-center w-1/2'>

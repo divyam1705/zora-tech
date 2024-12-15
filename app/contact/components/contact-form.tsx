@@ -36,7 +36,7 @@ export function ContactForm() {
 
     const handleSubmit = () => {
 
-        const mailtoLink = `mailto:support@zora-tech.com?subject=New Contact Form Submission&body=${encodeURIComponent(
+        const mailtoLink = `mailto:sukhraj@zoratechinc.com?subject=New Contact Form Submission&body=${encodeURIComponent(
             `Name: ${formData.firstName} ${formData.lastName}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
         )}`;
 

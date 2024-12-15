@@ -117,7 +117,7 @@ const TestimonialColumn = ({ testimonials, className }: TestimonialColumnProps) 
             {testimonials.map(({ text, imageSrc, name, username }) => (
                 <div key={username} className="card">
                     <div>{text}</div>
-                    <div className="flex items-center gap-2 mt-5">
+                    {/* <div className="flex items-center gap-2 mt-5">
                         <Image
                             width={40}
                             height={40}
@@ -125,11 +125,11 @@ const TestimonialColumn = ({ testimonials, className }: TestimonialColumnProps) 
                             alt={name}
                             className="w-10 h-10 rounded-full"
                         />
-                    </div>
-                    <div className="flex flex-col">
+                    </div> */}
+                    {/* <div className="flex flex-col">
                         <div className="font-medium tracking-tighter leading-5">{name}</div>
                         <div className="leading-5 tracking-tight">{username}</div>
-                    </div>
+                    </div> */}
                 </div>
             ))}
         </div>

@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
 import { useScrollContext } from "@/app/ScrollContext";
+import { useRouter } from "next/navigation";
 
 interface NavigationMenuProps {
     className?: string
@@ -72,7 +73,7 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
     const [active, setActive] = React.useState<string | null>(null);
 
     const { scrollToSection } = useScrollContext();
-
+    const router = useRouter();
     return (
         <NavigationMenu onMouseLeave={() => setActive(null)} className=" ">
             <NavigationMenuList className={cn("gap-2", className)}>
@@ -85,8 +86,9 @@ export function NavigationMenuHelper({ className }: NavigationMenuProps) {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <div >
-                        <MenuItem onClick={() => scrollToSection("service")} setActive={setActive} active={active} item="Services">
-                            <div onClick={() => setActive(null)} className="  text-sm grid grid-cols-1  gap-6 md:gap-4  md:py-2 ">
+                        {/* onClick={() => scrollToSection("service")} */}
+                        <MenuItem onClick={() => { router.push("/services") }} setActive={setActive} active={active} item="Services">
+                            <div onClick={() => setActive(null)} className="hidden   text-sm md:grid grid-cols-1  gap-6 md:gap-4  md:py-2 ">
                                 {services.map((service) => (
                                     <ProductItem
                                         key={service.name}

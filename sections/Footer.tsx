@@ -15,7 +15,8 @@ export const Footer = () => {
                 </div>
                 <nav className='flex flex-col gap-6 mt-6 md:flex-row md:justify-center'>
                     <Link className=' hover:text-white transition-all' href="/">Home</Link>
-                    <div onClick={() => scrollToSection("service")} className=' hover:text-white cursor-pointer transition-all'>Services</div>
+                    <Link className=' hover:text-white transition-all' href="/services">Services</Link>
+                    {/* <div onClick={() => scrollToSection("service")} className=' hover:text-white cursor-pointer transition-all'>Services</div> */}
                     <Link className=' hover:text-white transition-all' href="/about">About</Link>
                     <Link className=' hover:text-white transition-all' href="/contact">Contact</Link>
                 </nav>

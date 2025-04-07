@@ -13,6 +13,10 @@ const dmSans = DM_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Zora Tech",
   description: "",
+  icons: {
+    icon: "/zora-light.svg",
+    apple: "/zora-light.svg",
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +28,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/img/zora-dark.svg" />
+        <link rel="apple-touch-icon" href="/img/zora-dark.svg" />
+      </head>
       <body className={twMerge(dmSans.className, "antialiased bg-[#EAEEFE]")}>
         <ScrollProvider>
           <Header />

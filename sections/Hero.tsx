@@ -29,7 +29,7 @@ export const Hero = () => {
                             <p className="text-lg text-[#010D3E] tracking-tight mt-6">
                                 <strong>Zora Technologies Inc.</strong> (ZTI) is a global software development company providing expert engineering and consulting services across specialized technology domains. We work closely with our customers to solve critical business and technology challenges through tailored, results-driven solutions.
 
-In addition to custom software development, we offer comprehensive SAP implementation services and SAP data migration projects, supporting organizations throughout their digital transformation journeys with precision, security, and efficiency.
+In addition to custom software development, we offer comprehensive SAP implementation and SAP data migration services, supporting organizations throughout their digital transformation journeys with precision, security, and efficiency.
                             </p>
                             <div className="flex gap-1 items-center mt-[30px]">
                                 <Link href="/contact" legacyBehavior passHref>

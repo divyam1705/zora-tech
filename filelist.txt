@@ -18,7 +18,7 @@ D:\Work & Projects\Bot2Do\Zora Design\src\pages\MobileDevelopment.jsx
 D:\Work & Projects\Bot2Do\Zora Design\src\pages\RiseWithSap.jsx
 D:\Work & Projects\Bot2Do\Zora Design\src\pages\S4HanaMigration.jsx
 D:\Work & Projects\Bot2Do\Zora Design\src\pages\SapAms.jsx
-D:\Work & Projects\Bot2Do\Zora Design\src\pages\SapConsulting.jsx
+D:\Work & Projects\Bot2Do\Zora Design\src\pages\test.jsx
 D:\Work & Projects\Bot2Do\Zora Design\src\pages\SapFiori.jsx
 D:\Work & Projects\Bot2Do\Zora Design\src\pages\SapIntegration.jsx
 D:\Work & Projects\Bot2Do\Zora Design\src\pages\SapLicenses.jsx

@@ -1,0 +1,259 @@
+/* =========================================
+   ABOUT US - ENTERPRISE REDESIGN
+   ========================================= */
+
+.about-page-enterprise {
+    width: 100%;
+    min-height: 100vh;
+    /* Pastel Green Enterprise Gradient */
+    background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+    color: #1a1a1a;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.about-section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.about-container-black {
+    background-color: #080808;
+    /* Deep matte black */
+    border-radius: 20px;
+    padding: 4rem;
+    color: #d0d0d0;
+    /* Light gray body text */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Typography */
+.about-heading-primary {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.about-heading-secondary {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.about-subheading {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #a0a0a0;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #b0b0b0;
+    margin-bottom: 1.5rem;
+}
+
+.about-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff8163;
+    /* Neon Green */
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.accent-neon {
+    color: #ff8163;
+}
+
+/* 1. Hero Visuals */
+.about-visual-abstract {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.abstract-cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: floatRotate 10s infinite linear;
+}
+
+.cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(196, 111, 15, 0.3);
+    background: rgba(127, 255, 0, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cube-core {
+    width: 100px;
+    height: 100px;
+    background: #ff8163;
+    box-shadow: 0 0 50px #ff8163;
+    border-radius: 50%;
+    opacity: 0.2;
+}
+
+@keyframes floatRotate {
+    0% {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+/* 2. Capability Cards */
+.capability-card {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.capability-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(196, 111, 15, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.capability-icon {
+    font-size: 2rem;
+    color: #ff8163;
+    margin-bottom: 1rem;
+}
+
+.capability-title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.capability-desc {
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+/* 4. Process Flow */
+.process-step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.process-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.marker-dot {
+    width: 16px;
+    height: 16px;
+    background: #ff8163;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(196, 111, 15, 0.5);
+}
+
+.marker-line {
+    width: 2px;
+    flex-grow: 1;
+    background: rgba(196, 111, 15, 0.2);
+    min-height: 40px;
+    margin-top: 5px;
+}
+
+/* 5. Highlight Tiles */
+.highlight-tile {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ff8163;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s;
+}
+
+.highlight-tile:hover {
+    transform: translateX(10px);
+}
+
+.highlight-text {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 1.1rem;
+}
+
+/* 7. CTA Section */
+.footer-cta-container {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 6rem 1rem;
+}
+
+.cta-btn-primary {
+    background: #ff8163;
+    color: #000;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transfrom 0.2s, box-shadow 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(196, 111, 15, 0.4);
+}
+
+/* Global Grids */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .grid-2-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-container-black {
+        padding: 2rem;
+    }
+}

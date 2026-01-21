@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import NeonCursor from './NeonCursor';
+
 import Globe3D from './Globe3D';
 import Interactive3DBox from './Interactive3DBox';
 import { FaPlus, FaMinus, FaArrowRight } from 'react-icons/fa';
@@ -34,7 +34,7 @@ const ServiceDetailLayout = ({
 
     return (
         <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', color: '#0a1f00', position: 'relative', overflowX: 'hidden' }}>
-            <NeonCursor />
+
             <style>{`
                 /* Light Green Theme Styles */
                 .glass-card {
@@ -440,7 +440,7 @@ const ServiceDetailLayout = ({
 
             {/* 4. BENEFITS (Bento-lite) */}
             {benefits.length > 0 && (
-                <section style={{ padding: '4rem 0', backgroundColor: '#f9e6e0' }}>
+                <section style={{ padding: '4rem 0', backgroundColor: '#ffeeeaff' }}>
                     <div className="container">
                         <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
                             <h2 style={{ fontSize: '2.5rem', fontWeight: '800' }}>Key Benefits</h2>

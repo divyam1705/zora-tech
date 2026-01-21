@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaPhone, FaMapMarkerAlt, FaEnvelope, FaPlus, FaMinus, FaArrowLeft } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
-import NeonCursor from './NeonCursor';
+
 
 const Contact = () => {
     const navigate = useNavigate();
@@ -36,21 +36,62 @@ const Contact = () => {
         setTimeout(() => setShowToast(false), 3000);
     };
 
+    const flags = {
+        usa: (
+            <svg width="20" height="15" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: '2px', marginRight: '8px' }}>
+                <rect width="24" height="18" rx="2" fill="#fff" />
+                <rect y="2" width="24" height="2" fill="#B22234" />
+                <rect y="6" width="24" height="2" fill="#B22234" />
+                <rect y="10" width="24" height="2" fill="#B22234" />
+                <rect y="14" width="24" height="2" fill="#B22234" />
+                <rect width="10" height="9" rx="1" fill="#3C3B6E" />
+                <path d="M2 2L8 7M8 2L2 7" stroke="#fff" strokeWidth="1.5" opacity="0.5" />
+            </svg>
+        ),
+        canada: (
+            <svg width="20" height="15" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: '2px', marginRight: '8px' }}>
+                <rect width="24" height="18" rx="2" fill="#fff" />
+                <rect x="0" width="6" height="18" fill="#FF0000" />
+                <rect x="18" width="6" height="18" fill="#FF0000" />
+                <path d="M12 4L14 8H16L13 10L14 14L12 12L10 14L11 10L8 8H10L12 4Z" fill="#FF0000" />
+            </svg>
+        ),
+        india: (
+            <svg width="20" height="15" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: '2px', marginRight: '8px' }}>
+                <rect width="24" height="18" rx="2" fill="#fff" />
+                <rect width="24" height="6" fill="#FF9933" />
+                <rect y="12" width="24" height="6" fill="#138808" />
+                <circle cx="12" cy="9" r="2.5" stroke="#000080" strokeWidth="1.5" />
+                <circle cx="12" cy="9" r="0.5" fill="#000080" />
+            </svg>
+        )
+    };
+
     const locations = {
         usa: {
             title: "USA - Corporate Office",
+            flag: flags.usa,
             src: "https://maps.google.com/maps?q=9516%20Lee%20Highway%2C%20Suite%20C%2C%20Fairfax%2C%20VA%2022031&t=k&z=17&output=embed&iwloc=near",
             address: "9516 Lee Highway, Suite C, Fairfax, VA 22031",
             phone: "+1-512-394-9384"
         },
+        canada: {
+            title: "Canada Office",
+            flag: flags.canada,
+            src: "https://maps.google.com/maps?q=13494%20Innis%20Lake%20Road%2C%20Caledon%2C%20ON%2C%20Canada%2C%20L7C%202Y5&t=k&z=17&output=embed&iwloc=near",
+            address: "13494 Innis Lake Road, Caledon, ON, Canada, L7C 2Y5",
+            phone: ""
+        },
         punjab: {
             title: "Punjab Office",
+            flag: flags.india,
             src: "https://maps.google.com/maps?q=Grand%20City%20Plaza%2C%20Lodhi%20Club%20Road%2C%20Ludhiana&t=k&z=17&output=embed&iwloc=near",
             address: "BU 15-17, Grand City Plaza, Lodhi Club Road, Ludhiana - 141002",
             phone: "+91-987-654-3210"
         },
         tamilnadu: {
             title: "Tamilnadu Office",
+            flag: flags.india,
             src: "https://maps.google.com/maps?q=54%2C%20NRS%20Garden%2C%20Shenbakkam%2C%20Vellore&t=k&z=17&output=embed&iwloc=near",
             address: "54, NRS Garden, Shenbakkam, Vellore - 632008",
             phone: "+91-123-456-7890"
@@ -66,13 +107,13 @@ const Contact = () => {
     ];
 
     return (
-        <section style={{ backgroundColor: '#ffffff', minHeight: '100vh', position: 'relative', overflowX: 'hidden', paddingBottom: '4rem' }}>
+        <section style={{ backgroundColor: '#ffeeeaff', minHeight: '100vh', position: 'relative', overflowX: 'hidden', paddingBottom: '4rem' }}>
             {/* Mobile Back Button */}
             <div className="mobile-back-btn" onClick={() => navigate(-1)}>
                 <FaArrowLeft /> Back
             </div>
 
-            <NeonCursor />
+
 
             {/* Subtle Gradient Spots for Highlight */}
             <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(127,255,0,0.05) 0%, rgba(255,255,255,0) 70%)', borderRadius: '50%', pointerEvents: 'none' }} />
@@ -108,7 +149,8 @@ const Contact = () => {
                             border: '1px solid #ff8163',
                             borderRadius: '24px',
                             padding: '3rem',
-                            boxShadow: '0 10px 40px rgba(0,0,0,0.05)'
+                            boxShadow: '0 10px 40px rgba(0,0,0,0.05)',
+                            fontFamily: 'inherit'
                         }}
                     >
                         <h2 style={{ fontSize: '2rem', fontWeight: '800', color: '#000', marginBottom: '2rem' }}>Get in Touch</h2>
@@ -127,7 +169,7 @@ const Contact = () => {
                                 <div style={{ background: '#000', padding: '1rem', borderRadius: '12px', color: '#ff8163', fontSize: '1.5rem' }}><FaEnvelope /></div>
                                 <div>
                                     <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#000', margin: '0 0 0.5rem 0' }}>Email Us</h3>
-                                    <p style={{ color: '#000', margin: 0, fontSize: '1.1rem' }}>sukhraj@zoratechinc.com</p>
+                                    <p style={{ color: '#000', margin: 0, fontSize: '1.1rem' }}>contact@zoratechnologies.com</p>
                                     <p style={{ color: '#666', fontSize: '0.9rem', margin: '0.2rem 0 0 0' }}>We typically reply within 2 hours.</p>
                                 </div>
                             </div>
@@ -184,9 +226,9 @@ const Contact = () => {
                                     type="text" name="name" required value={formData.name} onChange={handleChange}
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '12px', border: '2px solid #ccc',
-                                        background: '#fff', fontSize: '1rem', outline: 'none', transition: 'all 0.3s', color: '#000'
+                                        background: '#fff', fontSize: '1rem', outline: 'none', transition: 'all 0.3s', color: '#000', fontFamily: 'inherit'
                                     }}
-                                    onFocus={(e) => { e.target.style.borderColor = '#ff8163'; e.target.style.background = '#fafff5'; }}
+                                    onFocus={(e) => { e.target.style.borderColor = '#ff8163'; e.target.style.background = '#ffeeeaff'; }}
                                     onBlur={(e) => { e.target.style.borderColor = '#ccc'; e.target.style.background = '#fff'; }}
                                     placeholder="e.g. John Doe"
                                 />
@@ -197,9 +239,9 @@ const Contact = () => {
                                     type="email" name="email" required value={formData.email} onChange={handleChange}
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '12px', border: '2px solid #ccc',
-                                        background: '#fff', fontSize: '1rem', outline: 'none', transition: 'all 0.3s', color: '#000'
+                                        background: '#fff', fontSize: '1rem', outline: 'none', transition: 'all 0.3s', color: '#000', fontFamily: 'inherit'
                                     }}
-                                    onFocus={(e) => { e.target.style.borderColor = '#ff8163'; e.target.style.background = '#fafff5'; }}
+                                    onFocus={(e) => { e.target.style.borderColor = '#ff8163'; e.target.style.background = '#ffeeeaff'; }}
                                     onBlur={(e) => { e.target.style.borderColor = '#ccc'; e.target.style.background = '#fff'; }}
                                     placeholder="john@example.com"
                                 />
@@ -210,9 +252,9 @@ const Contact = () => {
                                     name="message" required value={formData.message} onChange={handleChange} rows="4"
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '12px', border: '2px solid #ccc',
-                                        background: '#fff', fontSize: '1rem', outline: 'none', transition: 'all 0.3s', resize: 'none', color: '#000'
+                                        background: '#fff', fontSize: '1rem', outline: 'none', transition: 'all 0.3s', color: '#000', fontFamily: 'inherit'
                                     }}
-                                    onFocus={(e) => { e.target.style.borderColor = '#ff8163'; e.target.style.background = '#fafff5'; }}
+                                    onFocus={(e) => { e.target.style.borderColor = '#ff8163'; e.target.style.background = '#ffeeeaff'; }}
                                     onBlur={(e) => { e.target.style.borderColor = '#ccc'; e.target.style.background = '#fff'; }}
                                     placeholder="How can we help you?"
                                 ></textarea>
@@ -250,13 +292,16 @@ const Contact = () => {
                                     padding: '0.8rem 2rem', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: '700',
                                     background: activeLocation === loc ? '#ff8163' : '#f0f0f0',
                                     color: activeLocation === loc ? '#000' : '#888',
-                                    transition: 'all 0.3s'
+                                    transition: 'all 0.3s',
+                                    display: 'flex', alignItems: 'center', gap: '0.5rem'
                                 }}
                             >
+                                {locations[loc].flag}
                                 {locations[loc].title.split(' - ')[0]}
                             </button>
                         ))}
                     </div>
+
                     <div style={{ height: '400px', width: '100%', position: 'relative' }}>
                         <iframe
                             src={locations[activeLocation].src}

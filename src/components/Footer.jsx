@@ -46,7 +46,7 @@ const Footer = () => {
                     }
                     .locations-grid {
                         display: grid;
-                        grid-template-columns: repeat(3, 1fr);
+                        grid-template-columns: repeat(4, 1fr);
                         gap: 2rem;
                         margin-bottom: 4rem;
                     }
@@ -160,7 +160,7 @@ const Footer = () => {
                             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: '#b0b0b0', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#b0b0b0'}>
                                 <FaTwitter size={24} />
                             </a>
-                            <a href="mailto:hello@zoratech.com" style={{ color: '#b0b0b0', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#b0b0b0'}>
+                            <a href="mailto:contact@zoratechnologies.com" style={{ color: '#b0b0b0', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = '#b0b0b0'}>
                                 <FaEnvelope size={24} />
                             </a>
                         </div>
@@ -172,15 +172,56 @@ const Footer = () => {
                 {/* Locations Section */}
                 <div className="locations-grid">
                     <div className="location-item">
-                        <h4>USA</h4>
+                        <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="18" rx="2" fill="#fff" />
+                                <rect y="2" width="24" height="2" fill="#B22234" />
+                                <rect y="6" width="24" height="2" fill="#B22234" />
+                                <rect y="10" width="24" height="2" fill="#B22234" />
+                                <rect y="14" width="24" height="2" fill="#B22234" />
+                                <rect width="10" height="9" rx="1" fill="#3C3B6E" />
+                                <path d="M2 2L8 7M8 2L2 7" stroke="#fff" strokeWidth="1.5" opacity="0.5" />
+                            </svg>
+                            USA
+                        </h4>
                         <p>9516 Lee Highway, Suite C,<br />Fairfax, VA 22031</p>
                     </div>
                     <div className="location-item">
-                        <h4>PUNJAB, INDIA</h4>
+                        <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="18" rx="2" fill="#fff" />
+                                <rect x="0" width="6" height="18" fill="#FF0000" />
+                                <rect x="18" width="6" height="18" fill="#FF0000" />
+                                <path d="M12 4L14 8H16L13 10L14 14L12 12L10 14L11 10L8 8H10L12 4Z" fill="#FF0000" />
+                            </svg>
+                            CANADA
+                        </h4>
+                        <p>13494 Innis Lake Road,<br />Caledon, ON, Canada, L7C 2Y5</p>
+                    </div>
+                    <div className="location-item">
+                        <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="18" rx="2" fill="#fff" />
+                                <rect width="24" height="6" fill="#FF9933" />
+                                <rect y="12" width="24" height="6" fill="#138808" />
+                                <circle cx="12" cy="9" r="2.5" stroke="#000080" strokeWidth="1.5" />
+                                <circle cx="12" cy="9" r="0.5" fill="#000080" />
+                            </svg>
+                            PUNJAB, INDIA
+                        </h4>
                         <p>BU 15-17, Grand City Plaza,<br />Lodhi Club Road, Ludhiana - 141002</p>
                     </div>
                     <div className="location-item">
-                        <h4>TAMILNADU, INDIA</h4>
+                        <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="18" rx="2" fill="#fff" />
+                                <rect width="24" height="6" fill="#FF9933" />
+                                <rect y="12" width="24" height="6" fill="#138808" />
+                                <circle cx="12" cy="9" r="2.5" stroke="#000080" strokeWidth="1.5" />
+                                <circle cx="12" cy="9" r="0.5" fill="#000080" />
+                            </svg>
+                            TAMILNADU, INDIA
+                        </h4>
                         <p>54, NRS Garden,<br />Shenbakkam, Vellore - 632008</p>
                     </div>
                 </div>

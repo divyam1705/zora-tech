@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { FaDatabase, FaComments, FaNetworkWired, FaCheckCircle, FaHeadset, FaMobileAlt, FaArrowRight, FaCode, FaCloud, FaLaptopCode, FaApple, FaAndroid, FaMicrochip, FaPlane, FaBrain, FaNotesMedical, FaEye, FaRobot, FaAtom, FaArchive, FaProjectDiagram } from 'react-icons/fa';
 
@@ -41,49 +41,7 @@ const Services = () => {
     }, []);
 
 
-    // Smooth Cursor Logic
-    const cursorRef = React.useRef(null);
-    const mouseRef = React.useRef({ x: 0, y: 0 });
-    const followerRef = React.useRef({ x: 0, y: 0 });
 
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            mouseRef.current = { x: e.clientX, y: e.clientY };
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        // Animation Loop
-        let rafId;
-        const animateCursor = () => {
-            if (cursorRef.current) {
-                const { x: targetX, y: targetY } = mouseRef.current;
-                const { x: currentX, y: currentY } = followerRef.current;
-
-                // Lerp factor (0.1 = smooth slow, 0.2 = faster)
-                const lerp = 0.15;
-                const newX = currentX + (targetX - currentX) * lerp;
-                const newY = currentY + (targetY - currentY) * lerp;
-
-                followerRef.current = { x: newX, y: newY };
-                cursorRef.current.style.transform = `translate3d(${newX}px, ${newY}px, 0) translate(-50%, -50%)`;
-            }
-            rafId = requestAnimationFrame(animateCursor);
-        };
-        animateCursor();
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            cancelAnimationFrame(rafId);
-        };
-    }, []);
-
-    // Snap follower to mouse pos when hover starts to avoid flying in from 0,0
-    useEffect(() => {
-        if (hoveredExp) {
-            followerRef.current = { ...mouseRef.current };
-        }
-    }, [hoveredExp]);
 
     const softwareExpertise = [
         '.NET development', 'ASP.NET development', 'Web development services',
@@ -787,37 +745,9 @@ const Services = () => {
 
 
 
-            {/* Custom Cursor Follower - Portaled to Body */}
-            {
-                createPortal(
-                    <div
-                        ref={cursorRef}
-                        className="custom-cursor-follower"
-                        style={{
-                            position: 'fixed',
-                            top: 0,
-                            left: 0,
-                            pointerEvents: 'none',
-                            zIndex: 9999,
-                            opacity: (hoveredExp && softwareExpertise.includes(hoveredExp)) ? 1 : 0,
-                            transition: 'opacity 0.2s ease',
-                        }}
-                    >
-                        {hoveredExp && softwareExpertise.includes(hoveredExp) && expertiseIcons[hoveredExp] && (
-                            React.cloneElement(expertiseIcons[hoveredExp], {
-                                style: {
-                                    width: '60px',
-                                    height: '60px',
-                                    objectFit: 'contain',
-                                    filter: 'drop-shadow(0px 4px 10px rgba(0,0,0,0.2))'
-                                }
-                            })
-                        )}
-                    </div>,
-                    document.body
-                )
-            }
-        </div >
+
+
+        </div>
     );
 };
 

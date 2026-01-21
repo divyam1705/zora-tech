@@ -39,7 +39,7 @@ import MedicalDeviceIntegration from './pages/MedicalDeviceIntegration';
 import AiAgentDevelopment from './pages/AiAgentDevelopment';
 import About from './pages/About';
 
-import SmoothFollower from './components/SmoothFollower';
+import CustomCursor from './components/CustomCursor';
 import Footer from './components/Footer';
 
 import ScrollToTop from './components/ScrollToTop';
@@ -90,7 +90,7 @@ function App() {
           {/* Fallback for other sections if we had them, or anchor scrolls on home */}
         </Routes>
         <Footer />
-        <SmoothFollower />
+        <CustomCursor />
       </div>
     </Router>
   )

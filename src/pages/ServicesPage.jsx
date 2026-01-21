@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import NeonCursor from '../components/NeonCursor';
+
 
 import dotnetLogo from '../assets/dotnet.png';
 import aspnetLogo from '../assets/aspnet.png';

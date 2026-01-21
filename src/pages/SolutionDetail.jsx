@@ -7,7 +7,7 @@ import {
     FaLongArrowAltRight, FaMicrochip, FaCube
 } from 'react-icons/fa';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
-import NeonCursor from '../components/NeonCursor';
+
 
 const solutionData = {
     manufacturing: {
@@ -145,7 +145,7 @@ const SolutionDetail = () => {
 
     return (
         <div style={{ backgroundColor: '#050505', minHeight: '100vh', color: '#fff', fontFamily: '"Inter", sans-serif', overflowX: 'hidden' }}>
-            <NeonCursor />
+
 
             {/* Dynamic Styles */}
             <style>{`

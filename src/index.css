@@ -58,18 +58,12 @@
   box-sizing: border-box;
 }
 
-/* Hide cursor only on non-touch devices/larger screens where custom cursor exists */
+
+
+/* Hide default cursor on PC to allow CustomCursor */
 @media (min-width: 769px) {
   * {
-    cursor: none;
-  }
-
-  a,
-  button,
-  input,
-  select,
-  textarea {
-    cursor: none;
+    cursor: none !important;
   }
 }
 
@@ -96,9 +90,6 @@ a {
   transition: opacity 0.2s ease;
 }
 
-a:hover {
-  opacity: 0.7;
-}
 
 button {
   font-family: inherit;
@@ -842,7 +833,7 @@ button {
 .service-section {
   padding: 0 !important;
   /* Force zero padding */
-  background-color: #f9e6e0;
+  background-color: #ffeeeaff;
 }
 
 .title-grid-wrapper {
@@ -1545,7 +1536,7 @@ button {
 .showcase-section {
   padding: 2rem 4rem !important;
   /* Force zero padding */
-  background-color: #fff;
+  background: linear-gradient(135deg, #ffffff 65%, #ffeeeaff 35%);
 }
 
 .showcase-grid {
@@ -1808,7 +1799,7 @@ button {
 /* Testimonial Section Styling */
 .testimonial-section {
   padding: 5rem 0 5rem 0;
-  background: linear-gradient(135deg, #f9e6e0 30%, #ffffff 70%);
+  background: linear-gradient(135deg, #ffeeeaff 30%, #ffffff 70%);
   position: relative;
   overflow: hidden;
 }
@@ -3610,7 +3601,7 @@ button {
 
 /* --- AI & Innovation Section --- */
 .ai-innovation-section {
-  background-color: #fdd0c4;
+  background-color: #ffeeeaff;
   /* Very dark/black green hint */
   padding: 6rem 0;
   color: #000;
@@ -4047,7 +4038,7 @@ button {
   width: 60px;
   /* Larger icon box */
   height: 60px;
-  background: linear-gradient(135deg, #fdd0c4, #f0f0f0);
+  background: linear-gradient(135deg, #ffeeeaff, #f0f0f0);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -5265,7 +5256,6 @@ button {
 .sap-service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  background: #fff;
 }
 
 .sap-service-card h3 {

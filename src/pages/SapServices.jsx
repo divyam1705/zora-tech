@@ -1,6 +1,113 @@
 import React from 'react';
 import { FaAward, FaHandshake, FaCertificate, FaMedal } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import cardSapConsulting from '../assets/card-sap-consulting.jpg';
+import cardSapSecurity from '../assets/card-sap-security.jpg';
+import cardRiseWithSap from '../assets/card-rise-with-sap.jpg';
+import cardSapLicenses from '../assets/card-sap-licenses.jpg';
+import cardSapOnCloud from '../assets/card-sap-on-cloud.jpg';
+import cardSapSupport from '../assets/card-sap-support.jpg';
+import cardSapRollout from '../assets/card-sap-rollout.jpg';
+import cardSapImplementation from '../assets/card-sap-implementation.jpg';
+import cardSapAms from '../assets/card-sap-ams.jpg';
+import cardSapIntegration from '../assets/card-sap-integration.jpg';
+import cardSapMigration from '../assets/card-sap-migration.jpg';
+import cardSapManaged from '../assets/card-sap-managed.jpg';
+import cardSapFiori from '../assets/card-sap-fiori.jpg';
+
+const sapServicesData = [
+    {
+        id: 1,
+        title: 'Implementation',
+        description: 'Seamlessly integrate SAP ERP into existing business operations with our team of certified SAP professionals. We work closely with you throughout the implementation to understand your unique needs and transform them into an actionable delivery plan.',
+        image: cardSapImplementation,
+        link: '/services/sap-implementation'
+    },
+    {
+        id: 2,
+        title: 'Integration',
+        description: 'Connect SAP with the current IT landscape while maintaining uninterrupted data flows and integrity. Whether you need to integrate SAP with third-party applications, a legacy system, or a cloud-based platform, we will successfully perform any of these tasks with data security in mind.',
+        image: cardSapIntegration,
+        link: '/services/sap-integration'
+    },
+    {
+        id: 3,
+        title: 'SAP S/4HANA migration',
+        description: 'Leverage the latest SAP solutions by migrating to SAP S/4HANA with confidence! We make the migration process smooth by thoroughly assessing the current data infrastructure and creating a step-by-step, risk-free migration roadmap.',
+        image: cardSapMigration,
+        link: '/services/sap-migration'
+    },
+    {
+        id: 4,
+        title: 'SAP consulting',
+        description: "Effortlessly navigate the complexities of SAP solutions and maximize their value for your business with LeverX's insightful business knowledge of the industry and hands-on technical expertise, which we combine to define your SAP implementation strategy. We support you at every step of the process, from discovery and software design to delivery and support. We support your business growth with SAP ERP.",
+        image: cardSapConsulting,
+        link: '/services/sap-consulting'
+    },
+    {
+        id: 5,
+        title: 'SAP security services',
+        description: 'Protect your SAP system from cyber threats and vulnerabilities with our end-to-end security services, which include real-time risk assessment, vulnerability management, and the implementation of robust security solutions. We safeguard your mission-critical information and achieve full and ongoing compliance of your SAP environment with industry standards.',
+        image: cardSapSecurity,
+        link: '/services/sap-security'
+    },
+    {
+        id: 6,
+        title: 'RISE with SAP',
+        description: 'Step into the future with RISE with SAP, a solution that fosters digital transformation. We help you modernize the existing SAP ERP with a cloud-based solution to enable better business agility and scalability. Our services cover strategy, implementation and post-release support to ensure you can continuously harness the full potential of RISE with SAP.',
+        image: cardRiseWithSap,
+        link: '/services/rise-with-sap'
+    },
+    {
+        id: 7,
+        title: 'SAP Application Management Services',
+        description: 'We provide proactive and continuous support for your SAP applications through their constant performance monitoring, quality assurance, maintenance, and optimization. With our services, you can reduce downtime, boost productivity, and focus on your core business while we handle the complexities of your SAP environment.',
+        image: cardSapAms,
+        link: '/services/sap-ams'
+    },
+    {
+        id: 8,
+        title: 'SAP support',
+        description: 'With our timely assistance, keep your SAP systems running flawlessly! The LeverX team will resolve your issues by providing ongoing system maintenance. Ensure stable, uninterrupted performance of your SAP ERP and quickly solve any business challenges.',
+        image: cardSapSupport,
+        link: '/services/sap-support'
+    },
+    {
+        id: 9,
+        title: 'SAP rollout',
+        description: 'Seamlessly extend your existing SAP configuration from a distinct unit or location within the organization to its other parts. We provide dedicated SAP Implementation Rollout services to deliver a consistent SAP environment at the enterprise scale.',
+        image: cardSapRollout,
+        link: '/services/sap-rollout'
+    },
+    {
+        id: 10,
+        title: 'SAP managed services',
+        description: "Ensure the seamless operation of your SAP systems with our proactive managed services. We take care of your system's maintenance, upgrades, and performance optimization, allowing you to focus on strategic business goals while we handle the technical complexities. Count on LeverX for 24/7 support and uninterrupted performance of your SAP systems.",
+        image: cardSapManaged,
+        link: '/services/sap-managed-services'
+    },
+    {
+        id: 11,
+        title: 'SAP licenses',
+        description: 'LeverX helps you choose the right SAP licenses for your business needs, while ensuring compliance and cost-effectiveness. We guide you every step of the way, from license selection to implementation, so you can confidently use SAP solutions without worrying about legal issues.',
+        image: cardSapLicenses,
+        link: '/services/sap-licenses'
+    },
+    {
+        id: 12,
+        title: 'SAP on Cloud',
+        description: 'Running SAP on the cloud offers unparalleled agility and innovation potential. Whether you are considering a greenfield implementation or migrating an existing landscape, Zora Technologies provides the expertise to ensure a smooth journey.',
+        image: cardSapOnCloud,
+        link: '/services/sap-on-cloud'
+    },
+    {
+        id: 13,
+        title: 'SAP Fiori',
+        description: 'Employees today expect their work software to be as intuitive as the apps they use at home. SAP Fiori delivers this promise by reimagining the SAP user experience. It shifts the focus from functions to roles, giving users exactly what they need to do their job in a simple, tiled interface.',
+        image: cardSapFiori,
+        link: '/services/sap-fiori'
+    }
+];
 
 const SapServices = () => {
     return (
@@ -164,369 +271,41 @@ const SapServices = () => {
                         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                         gap: '2rem'
                     }}>
-                        {/* Card 1: Implementation */}
-                        <Link to="/services/sap-implementation" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800"
-                                alt="Implementation"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>Implementation</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Seamlessly integrate SAP ERP into existing business operations with our team of certified SAP professionals. We work closely with you throughout the implementation to understand your unique needs and transform them into an actionable delivery plan.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
+                        {sapServicesData.map((service) => (
+                            <Link
+                                key={service.id}
+                                to={service.link}
+                                className="sap-service-card"
+                                style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}
+                            >
+                                <img
+                                    src={service.image}
+                                    alt={service.title}
+                                    style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                                />
+                                <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>
+                                        {service.title}
+                                    </h3>
+                                    <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
+                                        {service.description}
+                                    </p>
+                                    <div style={{
+                                        textDecoration: 'none',
+                                        color: '#ff8163',
+                                        fontWeight: '700',
+                                        textTransform: 'uppercase',
+                                        fontSize: '0.9rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        marginTop: 'auto'
+                                    }}>
+                                        VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 2: Integration */}
-                        <Link to="/services/sap-integration" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
-                                alt="Integration"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>Integration</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Connect SAP with the current IT landscape while maintaining uninterrupted data flows and integrity. Whether you need to integrate SAP with third-party applications, a legacy system, or a cloud-based platform, we will successfully perform any of these tasks with data security in mind.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 3: Migration */}
-                        <Link to="/services/sap-migration" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
-                                alt="Migration"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP S/4HANA migration</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Leverage the latest SAP solutions by migrating to SAP S/4HANA with confidence! We make the migration process smooth by thoroughly assessing the current data infrastructure and creating a step-by-step, risk-free migration roadmap.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 4: SAP Consulting */}
-                        <Link to="/services/sap-consulting" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP Consulting"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP consulting</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Effortlessly navigate the complexities of SAP solutions and maximize their value for your business with LeverX's insightful business knowledge of the industry and hands-on technical expertise, which we combine to define your SAP implementation strategy. We support you at every step of the process, from discovery and software design to delivery and support. We support your business growth with SAP ERP.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 5: SAP Security Services */}
-                        <Link to="/services/sap-security" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP Security Services"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP security services</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Protect your SAP system from cyber threats and vulnerabilities with our end-to-end security services, which include real-time risk assessment, vulnerability management, and the implementation of robust security solutions. We safeguard your mission-critical information and achieve full and ongoing compliance of your SAP environment with industry standards.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 6: RISE with SAP */}
-                        <Link to="/services/rise-with-sap" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
-                                alt="RISE with SAP"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>RISE with SAP</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Step into the future with RISE with SAP, a solution that fosters digital transformation. We help you modernize the existing SAP ERP with a cloud-based solution to enable better business agility and scalability. Our services cover strategy, implementation and post-release support to ensure you can continuously harness the full potential of RISE with SAP.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 7: SAP Application Management Services */}
-                        <Link to="/services/sap-ams" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP Application Management Services"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP Application Management Services</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    We provide proactive and continuous support for your SAP applications through their constant performance monitoring, quality assurance, maintenance, and optimization. With our services, you can reduce downtime, boost productivity, and focus on your core business while we handle the complexities of your SAP environment.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 8: SAP Support */}
-                        <Link to="/services/sap-support" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP support"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP support</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    With our timely assistance, keep your SAP systems running flawlessly! The LeverX team will resolve your issues by providing ongoing system maintenance. Ensure stable, uninterrupted performance of your SAP ERP and quickly solve any business challenges.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 9: SAP Rollout */}
-                        <Link to="/services/sap-rollout" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP rollout"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP rollout</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Seamlessly extend your existing SAP configuration from a distinct unit or location within the organization to its other parts. We provide dedicated SAP Implementation Rollout services to deliver a consistent SAP environment at the enterprise scale.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 10: SAP managed services */}
-                        <Link to="/services/sap-managed-services" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP managed services"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP managed services</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Ensure the seamless operation of your SAP systems with our proactive managed services. We take care of your system's maintenance, upgrades, and performance optimization, allowing you to focus on strategic business goals while we handle the technical complexities. Count on LeverX for 24/7 support and uninterrupted performance of your SAP systems.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 11: SAP licenses */}
-                        <Link to="/services/sap-licenses" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP licenses"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP licenses</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    LeverX helps you choose the right SAP licenses for your business needs, while ensuring compliance and cost-effectiveness. We guide you every step of the way, from license selection to implementation, so you can confidently use SAP solutions without worrying about legal issues.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 12: SAP BTP Integration */}
-                        <Link to="/services/sap-on-cloud" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP on Cloud"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP on Cloud</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Running SAP on the cloud offers unparalleled agility and innovation potential. Whether you are considering a greenfield implementation or migrating an existing landscape, Zora Technologies provides the expertise to ensure a smooth journey.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 13: SAP Fiori */}
-                        <Link to="/services/sap-fiori" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
-                                alt="SAP Fiori"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>SAP on Cloud</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Employees today expect their work software to be as intuitive as the apps they use at home. SAP Fiori delivers this promise by reimagining the SAP user experience. It shifts the focus from functions to roles, giving users exactly what they need to do their job in a simple, tiled interface.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>

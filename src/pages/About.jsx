@@ -23,7 +23,7 @@ const About = () => {
     ];
 
     return (
-        <div className="about-page-enterprise">
+        <div className="about-page-enterprise" style={{ fontFamily: 'outfit' }}>
 
             {/* 1. HERO SECTION */}
             <section className="about-section about-hero-section">
@@ -66,7 +66,7 @@ const About = () => {
                                 maxWidth: '500px',
                                 borderRadius: '20px',
                                 boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
-                                transform: 'rotate(2deg)'
+                                // transform: 'rotate(2deg)' // Removed to make it straight
                             }}
                         />
                     </motion.div>
@@ -150,6 +150,7 @@ const About = () => {
                             style={{
                                 width: '100%',
                                 maxWidth: '400px',
+                                borderRadius: '24px',
                                 filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))',
                                 animation: 'float 6s ease-in-out infinite'
                             }}

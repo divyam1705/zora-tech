@@ -302,8 +302,8 @@ const Contact = () => {
                 >
                     <div className="map-locations-container" style={{ position: 'relative' }}>
                         {/* Scroll Buttons (Mobile Only via CSS) */}
-                        <button className="map-scroll-btn map-scroll-left" onClick={() => scroll('left')}><FaChevronLeft /></button>
-                        <button className="map-scroll-btn map-scroll-right" onClick={() => scroll('right')}><FaChevronRight /></button>
+                        <button className="map-scroll-btn map-scroll-left" onClick={() => scroll('left')}><FaChevronLeft color='#000' size={16} /></button>
+                        <button className="map-scroll-btn map-scroll-right" onClick={() => scroll('right')}><FaChevronRight color='#000' size={16} /></button>
 
                         <div ref={scrollRef} style={{ padding: '2rem', display: 'flex', gap: '1rem', borderBottom: '1px solid #f0f0f0', overflowX: 'auto', scrollBehavior: 'smooth', scrollbarWidth: 'none' }}>
                             {Object.keys(locations).map((loc) => (

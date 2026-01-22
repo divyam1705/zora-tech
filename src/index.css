@@ -506,9 +506,12 @@ button {
   /* Force white text for links in the black mobile menu */
   .nav-list.active .nav-link {
     color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 800;
-    text-transform: uppercase;
+    font-size: 1rem;
+    /* Match Desktop */
+    font-weight: 500;
+    /* Match Desktop */
+    text-transform: none;
+    /* Match Desktop */
     display: flex;
     align-items: center;
     width: 100%;
@@ -5373,7 +5376,7 @@ button {
   }
 
   .contact-main-title {
-    font-size: 2rem !important;
+    font-size: 3rem !important;
     line-height: 1.1 !important;
   }
 
@@ -5447,17 +5450,27 @@ button {
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    width: 32px;
-    height: 32px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: #fff !important;
+    /* Reverted to White */
     border: 1px solid #ccc;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    color: #333;
+    z-index: 10;
+    /* Dark Icon */
     font-size: 14px;
+    padding: 0;
+  }
+
+  .map-scroll-btn svg {
+    fill: #000 !important;
+    /* Dark Icon */
+    color: #000 !important;
+    font-size: 14px !important;
   }
 
   .map-scroll-left {
@@ -5472,4 +5485,114 @@ button {
 /* Default state for scroll buttons (Desktop) */
 .map-scroll-btn {
   display: none;
+}
+
+/* About Page Mobile Refinements */
+@media (max-width: 768px) {
+
+  /* Tighter Spacing for Mobile */
+  .about-section .container {
+    padding: 1rem 1rem !important;
+    /* Aggressively reduced from 2rem */
+  }
+
+  .about-section {
+    padding-bottom: 0 !important;
+    /* Remove section bottom padding if any */
+  }
+
+  .grid-2-col {
+    gap: 1.5rem !important;
+    /* Reduce grid gap */
+  }
+
+  /* Override inline min-heights */
+  .about-visual-abstract {
+    min-height: auto !important;
+    padding: 1rem !important;
+  }
+
+  /* Decrease Font Sizes */
+  .about-heading-primary {
+    /* Slight reduction */
+    font-size: 2.2rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .about-heading-secondary {
+    font-size: 1.75rem !important;
+  }
+
+  .about-text,
+  .about-text li {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Unified Border Radius */
+  .about-container-black,
+  .about-visual-abstract img,
+  .capability-card,
+  .highlight-tile,
+  .about-page-enterprise button {
+    border-radius: 24px !important;
+    /* Unified to match Contact page */
+  }
+
+  .about-page-enterprise button {
+    padding: 0.8rem 1.5rem !important;
+    /* Reduced padding */
+    font-size: 0.9rem !important;
+    /* Reduced font size */
+    width: auto !important;
+    /* Ensure it doesn't stretch weirdly if not needed, or 100% if preferred, usually auto for buttons */
+  }
+
+  /* Straighten First Image (Double Ensure) & Mobile Adjustments */
+  .about-visual-abstract img {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .about-container-black {
+    padding: 1.25rem 1rem !important;
+    /* Further reduced */
+    margin-bottom: 0 !important;
+  }
+
+  /* Ensure Uniform Width & Radius */
+  .about-container-black,
+  .about-visual-abstract,
+  .about-visual-abstract img,
+  .capability-card,
+  .highlight-tile,
+  .about-page-enterprise button {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    border-radius: 24px !important;
+    /* APPLIED TO EVERYTHING */
+  }
+
+  /* Specific fix for images inside visual abstract to ensure they inherit or match */
+  .about-visual-abstract img {
+    max-width: none !important;
+    /* Override inline style */
+    width: 100% !important;
+    border-radius: 24px !important;
+  }
+
+  /* Reduce internal margins */
+  .about-container-black h1,
+  .about-container-black h2,
+  .about-container-black p,
+  .about-container-black ul {
+    margin-bottom: 0.8rem !important;
+  }
+
+  .about-container-black div[style*="marginTop"] {
+    margin-top: 1rem !important;
+  }
 }

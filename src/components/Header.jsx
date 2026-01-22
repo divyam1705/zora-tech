@@ -148,7 +148,7 @@ const Header = () => {
                                     }
                                 }}
                             >
-                                <span style={{ flex: 1 }}>SERVICES</span>
+                                <span style={{ flex: 1 }}>Services</span>
                                 {isMobile && (
                                     <div className="mobile-icon-wrapper">
                                         <FaChevronRight style={{ transform: isServicesOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }} size={12} />

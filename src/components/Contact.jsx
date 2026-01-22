@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaPhone, FaMapMarkerAlt, FaEnvelope, FaPlus, FaMinus, FaArrowLeft } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaPhone, FaMapMarkerAlt, FaEnvelope, FaPlus, FaMinus, FaArrowLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
+import { useState, useRef } from 'react';
 
 
 const Contact = () => {
@@ -19,6 +19,19 @@ const Contact = () => {
     const [focusedInput, setFocusedInput] = useState(null);
     const [showToast, setShowToast] = useState(false);
     const [openFAQ, setOpenFAQ] = useState(null);
+    const scrollRef = useRef(null);
+
+    const scroll = (direction) => {
+        if (scrollRef.current) {
+            const { current } = scrollRef;
+            const scrollAmount = 200;
+            if (direction === 'left') {
+                current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+    };
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -107,7 +120,7 @@ const Contact = () => {
     ];
 
     return (
-        <section style={{ backgroundColor: '#ffeeeaff', minHeight: '100vh', position: 'relative', overflowX: 'hidden', paddingBottom: '4rem' }}>
+        <section className="contact-section" style={{ backgroundColor: '#ffeeeaff', minHeight: '100vh', position: 'relative', overflowX: 'hidden', paddingBottom: '4rem' }}>
             {/* Mobile Back Button */}
             <div className="mobile-back-btn" onClick={() => navigate(-1)}>
                 <FaArrowLeft /> Back
@@ -122,25 +135,27 @@ const Contact = () => {
 
                 {/* 1. HEADER */}
                 <motion.div
+                    className="contact-header-wrapper"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     style={{ textAlign: 'center', marginBottom: '4rem' }}
                 >
-                    <h1 style={{ fontSize: '4.5rem', fontWeight: '900', color: '#000', letterSpacing: '-2px', lineHeight: '1', marginBottom: '1rem' }}>
+                    <h1 className="contact-main-title" style={{ fontSize: '4.5rem', fontWeight: '900', color: '#000', letterSpacing: '-2px', lineHeight: '1', marginBottom: '1rem' }}>
                         Let's Create <br />
                         <span style={{ color: '#ff8163', textShadow: '0 0 1px rgba(0,0,0,0.1)', WebkitTextStroke: '1px #000' }}>Something Unique</span>
                     </h1>
-                    <p style={{ fontSize: '1.2rem', color: '#000', maxWidth: '600px', margin: '0 auto' }}>
+                    <p className="contact-sub-text" style={{ fontSize: '1.2rem', color: '#000', maxWidth: '600px', margin: '0 auto' }}>
                         Ready to transform your business? Drop us a line, visit our offices, or send a smoke signal. We're here to help.
                     </p>
                 </motion.div>
 
                 {/* 2. SPLIT GLASS LAYOUT (High Contrast) */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+                <div className="contact-content-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
 
                     {/* LEFT: Contact Info */}
                     <motion.div
+                        className="contact-info-card"
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -205,6 +220,7 @@ const Contact = () => {
 
                     {/* RIGHT: Form */}
                     <motion.div
+                        className="contact-form-card"
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
@@ -275,6 +291,7 @@ const Contact = () => {
 
                 {/* 3. MAP SECTION */}
                 <motion.div
+                    className="contact-map-card"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -283,23 +300,29 @@ const Contact = () => {
                         boxShadow: '0 10px 40px rgba(0,0,0,0.05)', border: '1px solid #ff8163'
                     }}
                 >
-                    <div style={{ padding: '2rem', display: 'flex', gap: '1rem', borderBottom: '1px solid #f0f0f0', overflowX: 'auto' }}>
-                        {Object.keys(locations).map((loc) => (
-                            <button
-                                key={loc}
-                                onClick={() => setActiveLocation(loc)}
-                                style={{
-                                    padding: '0.8rem 2rem', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: '700',
-                                    background: activeLocation === loc ? '#ff8163' : '#f0f0f0',
-                                    color: activeLocation === loc ? '#000' : '#888',
-                                    transition: 'all 0.3s',
-                                    display: 'flex', alignItems: 'center', gap: '0.5rem'
-                                }}
-                            >
-                                {locations[loc].flag}
-                                {locations[loc].title.split(' - ')[0]}
-                            </button>
-                        ))}
+                    <div className="map-locations-container" style={{ position: 'relative' }}>
+                        {/* Scroll Buttons (Mobile Only via CSS) */}
+                        <button className="map-scroll-btn map-scroll-left" onClick={() => scroll('left')}><FaChevronLeft /></button>
+                        <button className="map-scroll-btn map-scroll-right" onClick={() => scroll('right')}><FaChevronRight /></button>
+
+                        <div ref={scrollRef} style={{ padding: '2rem', display: 'flex', gap: '1rem', borderBottom: '1px solid #f0f0f0', overflowX: 'auto', scrollBehavior: 'smooth', scrollbarWidth: 'none' }}>
+                            {Object.keys(locations).map((loc) => (
+                                <button
+                                    key={loc}
+                                    onClick={() => setActiveLocation(loc)}
+                                    style={{
+                                        padding: '0.8rem 2rem', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: '700',
+                                        background: activeLocation === loc ? '#ff8163' : '#f0f0f0',
+                                        color: activeLocation === loc ? '#000' : '#888',
+                                        transition: 'all 0.3s',
+                                        display: 'flex', alignItems: 'center', gap: '0.5rem'
+                                    }}
+                                >
+                                    {locations[loc].flag}
+                                    {locations[loc].title.split(' - ')[0]}
+                                </button>
+                            ))}
+                        </div>
                     </div>
 
                     <div style={{ height: '400px', width: '100%', position: 'relative' }}>
@@ -315,8 +338,8 @@ const Contact = () => {
                 </motion.div>
 
                 {/* 4. FAQ SECTION */}
-                <div style={{ marginTop: '5rem', maxWidth: '800px', margin: '5rem auto 0' }}>
-                    <h2 style={{ fontSize: '2.5rem', fontWeight: '800', textAlign: 'center', marginBottom: '3rem', color: '#000' }}>Frequently Asked Questions</h2>
+                <div className="contact-faq-section" style={{ marginTop: '5rem', maxWidth: '800px', margin: '5rem auto 0' }}>
+                    <h2 className="contact-faq-title" style={{ fontSize: '2.5rem', fontWeight: '800', textAlign: 'center', marginBottom: '3rem', color: '#000' }}>Frequently Asked Questions</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                         {faqs.map((faq, i) => (
                             <div key={i} style={{ paddingBottom: '0.5rem' }}>

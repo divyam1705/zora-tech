@@ -136,8 +136,8 @@ const Header = () => {
                             className="nav-item-has-submenu"
                         >
                             <div
-                                className={`nav-link ${location.pathname.includes('/services') ? 'active' : ''}`}
-                                style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                                className={`nav-link ${location.pathname.includes('/services') ? 'active' : ''} ${isMobile ? 'mobile-nav-row' : ''}`}
+                                style={!isMobile ? { cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' } : {}}
                                 onClick={(e) => {
                                     if (isMobile) {
                                         e.preventDefault();
@@ -148,20 +148,17 @@ const Header = () => {
                                     }
                                 }}
                             >
-                                Services {isMobile && <FaChevronRight style={{ transform: isServicesOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }} size={12} />}
+                                <span style={{ flex: 1 }}>SERVICES</span>
+                                {isMobile && (
+                                    <div className="mobile-icon-wrapper">
+                                        <FaChevronRight style={{ transform: isServicesOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }} size={12} />
+                                    </div>
+                                )}
                             </div>
 
                             {/* Mobile Accordion for Services */}
                             {isMobile && isServicesOpen && (
-                                <div className="mobile-services-accordion" style={{
-                                    width: '100%',
-                                    paddingLeft: '1rem',
-                                    marginTop: '1rem',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '1rem',
-                                    alignItems: 'flex-start'
-                                }}>
+                                <div className="mobile-services-accordion">
                                     {Object.keys(SERVICE_MENU_DATA).map((category) => {
                                         const categoryLink = {
                                             "SAP Data Management": "/services/sap-data-management-hub",
@@ -172,53 +169,24 @@ const Header = () => {
 
                                         return (
                                             <div key={category} style={{ width: '100%' }}>
-                                                <div
-                                                    style={{
-                                                        color: '#fff',
-                                                        fontWeight: '700',
-                                                        fontSize: '1.1rem',
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        marginBottom: '0.5rem'
-                                                    }}
-                                                >
+                                                <div className="mobile-category-header">
                                                     <Link
                                                         to={categoryLink}
                                                         onClick={closeMenu}
-                                                        style={{
-                                                            color: 'inherit',
-                                                            textDecoration: 'none',
-                                                            flex: 1,
-                                                            cursor: 'pointer'
-                                                        }}
+                                                        className="mobile-category-title"
                                                     >
                                                         {category}
                                                     </Link>
-                                                    <div
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            toggleMobileCategory(category);
-                                                        }}
-                                                        style={{
-                                                            padding: '0.5rem',
-                                                            cursor: 'pointer',
-                                                            display: 'flex',
-                                                            alignItems: 'center'
-                                                        }}
-                                                    >
-                                                        <FaChevronRight size={14} style={{ transform: mobileExpandedCategory === category ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
-                                                    </div>
                                                 </div>
 
                                                 {mobileExpandedCategory === category && (
-                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', paddingLeft: '1rem', borderLeft: '1px solid #333', marginTop: '0.5rem' }}>
+                                                    <div className="mobile-subcategory-list">
                                                         {SERVICE_MENU_DATA[category].map((item, idx) => (
                                                             <Link
                                                                 key={idx}
                                                                 to={item.link}
                                                                 onClick={closeMenu}
-                                                                style={{ color: '#ccc', fontSize: '0.9rem', textDecoration: 'none' }}
+                                                                className="mobile-subcategory-link"
                                                             >
                                                                 {item.title}
                                                             </Link>
@@ -233,7 +201,7 @@ const Header = () => {
                                                                 default: hubLink = "/services";
                                                             }
                                                             return (
-                                                                <Link to={hubLink} onClick={closeMenu} style={{ color: '#ff8163', fontWeight: 'bold', fontSize: '0.8rem', marginTop: '0.5rem', textTransform: 'uppercase' }}>
+                                                                <Link to={hubLink} onClick={closeMenu} className="mobile-view-all-link">
                                                                     ALL {category} &rarr;
                                                                 </Link>
                                                             );

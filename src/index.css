@@ -3745,7 +3745,7 @@ button {
   background: linear-gradient(90deg, #ff8163 0%, #ff8163 100%);
   /* Neon Green Gradient */
   color: #000;
-  padding: 0.2rem 1rem;
+  padding: 0.2rem 0.5rem;
   display: inline-block;
   transform: skewX(-10deg);
 }

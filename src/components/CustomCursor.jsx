@@ -8,18 +8,54 @@ const CustomCursor = () => {
     // We use refs for position to avoid re-renders on every mousemove
     const position = useRef({ x: -100, y: -100 });
 
+    // Mobile Touch Handling
+    const [isVisible, setIsVisible] = useState(false); // Default hidden
+    const isMobile = useRef(false);
+
     useEffect(() => {
+        // Check if mobile
+        const checkMobile = () => {
+            isMobile.current = window.innerWidth <= 768;
+            // On desktop, always visible (unless cursor:none logic fails, but CSS handles that)
+            if (!isMobile.current) setIsVisible(true);
+            else setIsVisible(false); // Start hidden on mobile
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
         const onMouseMove = (e) => {
+            if (isMobile.current) return; // Ignore mouse on mobile (touch handles it)
             position.current = { x: e.clientX, y: e.clientY };
+            setIsVisible(true);
+        };
+
+        const onTouchStart = (e) => {
+            if (!isMobile.current) return;
+            const touch = e.touches[0];
+            position.current = { x: touch.clientX, y: touch.clientY };
+            setIsVisible(true);
+            setIsClicking(true);
+        };
+
+        const onTouchMove = (e) => {
+            if (!isMobile.current) return;
+            const touch = e.touches[0];
+            position.current = { x: touch.clientX, y: touch.clientY };
+        };
+
+        const onTouchEnd = () => {
+            if (!isMobile.current) return;
+            setIsVisible(false);
+            setIsClicking(false);
         };
 
         const onMouseDown = () => setIsClicking(true);
         const onMouseUp = () => setIsClicking(false);
 
         const onMouseOver = (e) => {
+            if (isMobile.current) return; // Skip hover logic on mobile
             // Determine cursor type based on computed style or element type
-            // Checking computed style is safer but slightly more expensive. 
-            // Since this is mouseOver, it's fine.
+            // ... (rest of logic same as before) ...
 
             // Optimization: First check tag/attributes, then computed style if needed
             const target = e.target;
@@ -27,7 +63,6 @@ const CustomCursor = () => {
 
             // Text Input / TextArea
             if (tagName === 'input' || tagName === 'textarea' || target.isContentEditable) {
-                // Check distinct types of input
                 const type = target.getAttribute('type');
                 if (!type || ['text', 'email', 'number', 'search', 'tel', 'url', 'password'].includes(type)) {
                     setCursorType('text');
@@ -65,23 +100,36 @@ const CustomCursor = () => {
         window.addEventListener('mouseup', onMouseUp);
         window.addEventListener('mouseover', onMouseOver);
 
+        // Touch Events
+        window.addEventListener('touchstart', onTouchStart, { passive: true });
+        window.addEventListener('touchmove', onTouchMove, { passive: true });
+        window.addEventListener('touchend', onTouchEnd);
+
         let rafId;
         const animate = () => {
             if (cursorRef.current) {
                 cursorRef.current.style.transform = `translate3d(${position.current.x}px, ${position.current.y}px, 0)`;
+                // Toggle visibility
+                cursorRef.current.style.opacity = isVisible ? 1 : 0;
             }
             rafId = requestAnimationFrame(animate);
         };
         rafId = requestAnimationFrame(animate);
 
         return () => {
+            window.removeEventListener('resize', checkMobile);
             window.removeEventListener('mousemove', onMouseMove);
             window.removeEventListener('mousedown', onMouseDown);
             window.removeEventListener('mouseup', onMouseUp);
             window.removeEventListener('mouseover', onMouseOver);
+
+            window.removeEventListener('touchstart', onTouchStart);
+            window.removeEventListener('touchmove', onTouchMove);
+            window.removeEventListener('touchend', onTouchEnd);
+
             cancelAnimationFrame(rafId);
         };
-    }, []);
+    }, [isVisible]); // Re-bind if isVisible changes (though mostly for state updates)
 
     return (
         <div

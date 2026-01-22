@@ -1,6 +1,57 @@
 import React from 'react';
 import { FaDatabase, FaArchive, FaNetworkWired, FaProjectDiagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import cardS4HanaMigration from '../assets/card-s4-hana-migration.jpg';
+import cardMasterDataManagement from '../assets/card-master-data-management.jpg';
+
+import cardDataIntegration from '../assets/card-data-integration.jpg';
+
+const pageData = {
+    hero: {
+        title: "SAP Data Management",
+        subtitle: "Architecting the foundation of your digital enterprise with precision, scale, and intelligence.",
+        bgImage: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80&w=2000"
+    },
+    overview: {
+        breadcrumbs: [
+            { label: "Home", link: "/" },
+            { label: "Services", link: "/services" },
+            { label: "SAP Data Management", link: null }
+        ],
+        title: "Data: The Lifeblood of Your Enterprise",
+        description: "In the digital age, effective data management is not just an IT task—it's a strategic imperative. Zora Technologies provides comprehensive SAP Data Management solutions that ensure your data is clean, consistent, secure, and available when you need it. From seamless migrations to S/4HANA to ongoing master data governance, we empower your business to make data-driven decisions with confidence."
+    },
+    services: [
+        {
+            id: 1,
+            title: "S/4 HANA Migration",
+            description: "Risk-free transition protocol. Seamlessly move your legacy systems to the modern S/4HANA landscape with minimal downtime.",
+            image: cardS4HanaMigration,
+            link: "/services/s4-hana-migration"
+        },
+        {
+            id: 2,
+            title: "Active Archiving",
+            description: "Intelligent lifecycle management. Reduce database growth, improve system performance, and ensure compliance with automated archiving.",
+            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
+            link: "/services/data-archiving"
+        },
+        {
+            id: 3,
+            title: "Master Data Management",
+            description: "Single source of truth governance. Establish consistent, accurate, and accountable data across your entire enterprise.",
+            image: cardMasterDataManagement,
+            link: "/services/master-data-management"
+        },
+        {
+            id: 4,
+            title: "Data Integration",
+            description: "Seamless system unification. Connect disparate systems, applications, and data sources to create a unified, real-time ecosystem.",
+            image: cardDataIntegration,
+            link: "/services/data-integration"
+        }
+    ]
+};
 
 const SapDataManagement = () => {
     return (
@@ -25,8 +76,8 @@ const SapDataManagement = () => {
                     zIndex: 0
                 }}>
                     <img
-                        src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80&w=2000"
-                        alt="SAP Data Management"
+                        src={pageData.hero.bgImage}
+                        alt={pageData.hero.title}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
                     />
                     {/* Gradient Overlay */}
@@ -50,7 +101,7 @@ const SapDataManagement = () => {
                             letterSpacing: '-0.02em',
                             textShadow: '0 2px 10px rgba(0,0,0,0.3)'
                         }}>
-                            SAP Data Management
+                            {pageData.hero.title}
                         </h1>
                         <p style={{
                             fontSize: '1.25rem',
@@ -59,7 +110,7 @@ const SapDataManagement = () => {
                             color: '#e0e0e0',
                             fontWeight: '400'
                         }}>
-                            Architecting the foundation of your digital enterprise with precision, scale, and intelligence.
+                            {pageData.hero.subtitle}
                         </p>
                         <Link to="/contact" style={{
                             display: 'inline-block',
@@ -95,11 +146,18 @@ const SapDataManagement = () => {
                         alignItems: 'center',
                         gap: '0.5rem'
                     }}>
-                        <Link to="/" style={{ color: '#ff8163', textDecoration: 'none' }}>Home</Link>
-                        <span style={{ color: '#9ca3af' }}>•</span>
-                        <Link to="/services" style={{ color: '#ff8163', textDecoration: 'none' }}>Services</Link>
-                        <span style={{ color: '#9ca3af' }}>•</span>
-                        <span style={{ color: '#6b7280' }}>SAP Data Management</span>
+                        {pageData.overview.breadcrumbs.map((crumb, index) => (
+                            <React.Fragment key={index}>
+                                {crumb.link ? (
+                                    <Link to={crumb.link} style={{ color: '#ff8163', textDecoration: 'none' }}>{crumb.label}</Link>
+                                ) : (
+                                    <span style={{ color: '#6b7280' }}>{crumb.label}</span>
+                                )}
+                                {index < pageData.overview.breadcrumbs.length - 1 && (
+                                    <span style={{ color: '#9ca3af' }}>•</span>
+                                )}
+                            </React.Fragment>
+                        ))}
                     </div>
 
                     {/* Content */}
@@ -111,7 +169,7 @@ const SapDataManagement = () => {
                             color: '#1a1a1a',
                             lineHeight: '1.2'
                         }}>
-                            Data: The Lifeblood of Your Enterprise
+                            {pageData.overview.title}
                         </h2>
                         <p style={{
                             fontSize: '1.1rem',
@@ -119,7 +177,7 @@ const SapDataManagement = () => {
                             color: '#444',
                             marginBottom: '2rem'
                         }}>
-                            In the digital age, effective data management is not just an IT task—it's a strategic imperative. Zora Technologies provides comprehensive SAP Data Management solutions that ensure your data is clean, consistent, secure, and available when you need it. From seamless migrations to S/4HANA to ongoing master data governance, we empower your business to make data-driven decisions with confidence.
+                            {pageData.overview.description}
                         </p>
                     </div>
                 </div>
@@ -133,117 +191,34 @@ const SapDataManagement = () => {
                         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                         gap: '2rem'
                     }}>
-                        {/* Card 1: S/4 HANA Migration */}
-                        <Link to="/services/s4-hana-migration" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
-                                alt="S/4 HANA Migration"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>S/4 HANA Migration</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Risk-free transition protocol. Seamlessly move your legacy systems to the modern S/4HANA landscape with minimal downtime.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
+                        {pageData.services.map((service) => (
+                            <Link key={service.id} to={service.link} className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
+                                <img
+                                    src={service.image}
+                                    alt={service.title}
+                                    style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                                />
+                                <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>{service.title}</h3>
+                                    <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
+                                        {service.description}
+                                    </p>
+                                    <div style={{
+                                        textDecoration: 'none',
+                                        color: '#ff8163',
+                                        fontWeight: '700',
+                                        textTransform: 'uppercase',
+                                        fontSize: '0.9rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        marginTop: 'auto'
+                                    }}>
+                                        VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 2: Active Archiving */}
-                        <Link to="/services/data-archiving" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
-                                alt="Active Archiving"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>Active Archiving</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Intelligent lifecycle management. Reduce database growth, improve system performance, and ensure compliance with automated archiving.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 3: Master Data Management */}
-                        <Link to="/services/master-data-management" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
-                                alt="Master Data Management"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>Master Data Management</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Single source of truth governance. Establish consistent, accurate, and accountable data across your entire enterprise.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* Card 4: Data Integration */}
-                        <Link to="/services/data-integration" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
-                            <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
-                                alt="Data Integration"
-                                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                            />
-                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#000', marginBottom: '1rem' }}>Data Integration</h3>
-                                <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#555', marginBottom: '2rem', flex: 1 }}>
-                                    Seamless system unification. Connect disparate systems, applications, and data sources to create a unified, real-time ecosystem.
-                                </p>
-                                <div style={{
-                                    textDecoration: 'none',
-                                    color: '#ff8163',
-                                    fontWeight: '700',
-                                    textTransform: 'uppercase',
-                                    fontSize: '0.9rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    marginTop: 'auto'
-                                }}>
-                                    VIEW MORE <span style={{ fontSize: '1.1rem' }}>→</span>
-                                </div>
-                            </div>
-                        </Link>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>

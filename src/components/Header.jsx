@@ -58,6 +58,21 @@ const Header = () => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [activeServiceCategory, setActiveServiceCategory] = useState("SAP Data Management");
 
+    // Mobile Detection
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+            if (window.innerWidth > 768) {
+                setMobileMenuOpen(false); // Close mobile menu on desktop switch
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     useEffect(() => {
         // 1. Exact match from menu items
         if (LINK_TO_CATEGORY[location.pathname]) {
@@ -79,6 +94,8 @@ const Header = () => {
 
     const toggleMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
+        setIsServicesOpen(false); // Reset services expansion on toggle
+        setActiveServiceCategory("SAP Data Management"); // Reset to default
     };
 
     const closeMenu = () => {
@@ -86,8 +103,19 @@ const Header = () => {
         setIsServicesOpen(false);
     };
 
+    // Mobile Service Accordion State
+    const [mobileExpandedCategory, setMobileExpandedCategory] = useState(null);
+
+    const toggleMobileCategory = (category) => {
+        if (mobileExpandedCategory === category) {
+            setMobileExpandedCategory(null);
+        } else {
+            setMobileExpandedCategory(category);
+        }
+    };
+
     return (
-        <header className="header" onMouseLeave={() => setIsServicesOpen(false)}>
+        <header className="header" onMouseLeave={() => !isMobile && setIsServicesOpen(false)}>
             <div className="container header-container">
                 <div className="logo-container">
                     <img src="/zora-logo.png" alt="Zora Logo" className="logo-image" />
@@ -103,17 +131,119 @@ const Header = () => {
                         <li><Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMenu}>Home</Link></li>
 
                         <li
-                            onMouseEnter={() => setIsServicesOpen(true)}
+                            onMouseEnter={() => !isMobile && setIsServicesOpen(true)}
                             className="nav-item-has-submenu"
                         >
-                            <Link
-                                to="/services"
+                            <div
                                 className={`nav-link ${location.pathname.includes('/services') ? 'active' : ''}`}
-                                style={{ cursor: 'pointer' }}
-                                onClick={closeMenu}
+                                style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                                onClick={(e) => {
+                                    if (isMobile) {
+                                        e.preventDefault();
+                                        setIsServicesOpen(!isServicesOpen);
+                                    } else {
+                                        closeMenu();
+                                        navigate('/services');
+                                    }
+                                }}
                             >
-                                Services
-                            </Link>
+                                Services {isMobile && <FaChevronRight style={{ transform: isServicesOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }} size={12} />}
+                            </div>
+
+                            {/* Mobile Accordion for Services */}
+                            {isMobile && isServicesOpen && (
+                                <div className="mobile-services-accordion" style={{
+                                    width: '100%',
+                                    paddingLeft: '1rem',
+                                    marginTop: '1rem',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '1rem',
+                                    alignItems: 'flex-start'
+                                }}>
+                                    {Object.keys(SERVICE_MENU_DATA).map((category) => {
+                                        const categoryLink = {
+                                            "SAP Data Management": "/services/sap-data-management-hub",
+                                            "SAP Services": "/services/sap-services",
+                                            "Software Engineering": "/services/software-engineering-hub",
+                                            "AI & Innovation": "/services/ai-innovation-services"
+                                        }[category] || "/services";
+
+                                        return (
+                                            <div key={category} style={{ width: '100%' }}>
+                                                <div
+                                                    style={{
+                                                        color: '#fff',
+                                                        fontWeight: '700',
+                                                        fontSize: '1.1rem',
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center',
+                                                        marginBottom: '0.5rem'
+                                                    }}
+                                                >
+                                                    <Link
+                                                        to={categoryLink}
+                                                        onClick={closeMenu}
+                                                        style={{
+                                                            color: 'inherit',
+                                                            textDecoration: 'none',
+                                                            flex: 1,
+                                                            cursor: 'pointer'
+                                                        }}
+                                                    >
+                                                        {category}
+                                                    </Link>
+                                                    <div
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            toggleMobileCategory(category);
+                                                        }}
+                                                        style={{
+                                                            padding: '0.5rem',
+                                                            cursor: 'pointer',
+                                                            display: 'flex',
+                                                            alignItems: 'center'
+                                                        }}
+                                                    >
+                                                        <FaChevronRight size={14} style={{ transform: mobileExpandedCategory === category ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
+                                                    </div>
+                                                </div>
+
+                                                {mobileExpandedCategory === category && (
+                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', paddingLeft: '1rem', borderLeft: '1px solid #333', marginTop: '0.5rem' }}>
+                                                        {SERVICE_MENU_DATA[category].map((item, idx) => (
+                                                            <Link
+                                                                key={idx}
+                                                                to={item.link}
+                                                                onClick={closeMenu}
+                                                                style={{ color: '#ccc', fontSize: '0.9rem', textDecoration: 'none' }}
+                                                            >
+                                                                {item.title}
+                                                            </Link>
+                                                        ))}
+                                                        {(() => {
+                                                            let hubLink = "/services";
+                                                            switch (category) {
+                                                                case "SAP Services": hubLink = "/services/sap-services"; break;
+                                                                case "AI & Innovation": hubLink = "/services/ai-innovation-services"; break;
+                                                                case "SAP Data Management": hubLink = "/services/sap-data-management-hub"; break;
+                                                                case "Software Engineering": hubLink = "/services/software-engineering-hub"; break;
+                                                                default: hubLink = "/services";
+                                                            }
+                                                            return (
+                                                                <Link to={hubLink} onClick={closeMenu} style={{ color: '#ff8163', fontWeight: 'bold', fontSize: '0.8rem', marginTop: '0.5rem', textTransform: 'uppercase' }}>
+                                                                    ALL {category} &rarr;
+                                                                </Link>
+                                                            );
+                                                        })()}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )}
                         </li>
 
                         <li><Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} onClick={closeMenu}>About Us</Link></li>
@@ -130,73 +260,75 @@ const Header = () => {
                 </nav>
             </div>
 
-            {/* Mega Menu Dropdown */}
-            <AnimatePresence>
-                {isServicesOpen && (
-                    <motion.div
-                        className="mega-menu-container"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        onMouseEnter={() => setIsServicesOpen(true)}
-                        onMouseLeave={() => setIsServicesOpen(false)}
-                    >
-                        {/* Sidebar */}
-                        <div className="mega-menu-sidebar">
-                            {Object.keys(SERVICE_MENU_DATA).map((category) => (
-                                <div
-                                    key={category}
-                                    className={`mega-menu-category ${activeServiceCategory === category ? 'active' : ''}`}
-                                    onMouseEnter={() => setActiveServiceCategory(category)}
-                                >
-                                    {category}
-                                    {activeServiceCategory === category && <FaChevronRight size={12} />}
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Content Area */}
-                        <div className="mega-menu-content">
-                            <h3 className="tech-mono" style={{ marginBottom: '2rem', fontSize: '1.2rem' }}>
-                                {activeServiceCategory}
-                            </h3>
-                            <div className="mega-menu-grid">
-                                {SERVICE_MENU_DATA[activeServiceCategory].map((item, index) => (
-                                    <Link to={item.link} key={index} className="mega-link-item" onClick={closeMenu}>
-                                        <div className="mega-link-title">{item.title}</div>
-                                        <div className="mega-link-desc">{item.desc}</div>
-                                    </Link>
+            {/* Mega Menu Dropdown (Desktop Only) */}
+            {!isMobile && (
+                <AnimatePresence>
+                    {isServicesOpen && (
+                        <motion.div
+                            className="mega-menu-container"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ duration: 0.2 }}
+                            onMouseEnter={() => setIsServicesOpen(true)}
+                            onMouseLeave={() => setIsServicesOpen(false)}
+                        >
+                            {/* Sidebar */}
+                            <div className="mega-menu-sidebar">
+                                {Object.keys(SERVICE_MENU_DATA).map((category) => (
+                                    <div
+                                        key={category}
+                                        className={`mega-menu-category ${activeServiceCategory === category ? 'active' : ''}`}
+                                        onMouseEnter={() => setActiveServiceCategory(category)}
+                                    >
+                                        {category}
+                                        {activeServiceCategory === category && <FaChevronRight size={12} />}
+                                    </div>
                                 ))}
                             </div>
-                            {(() => {
-                                let hubLink = "/services";
-                                switch (activeServiceCategory) {
-                                    case "SAP Services":
-                                        hubLink = "/services/sap-services";
-                                        break;
-                                    case "AI & Innovation":
-                                        hubLink = "/services/ai-innovation-services";
-                                        break;
-                                    case "SAP Data Management":
-                                        hubLink = "/services/sap-data-management-hub";
-                                        break;
-                                    case "Software Engineering":
-                                        hubLink = "/services/software-engineering-hub";
-                                        break;
-                                    default:
-                                        hubLink = "/services";
-                                }
-                                return (
-                                    <Link to={hubLink} className="mega-menu-footer-link" onClick={closeMenu}>
-                                        ALL {activeServiceCategory} &rarr;
-                                    </Link>
-                                );
-                            })()}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+
+                            {/* Content Area */}
+                            <div className="mega-menu-content">
+                                <h3 className="tech-mono" style={{ marginBottom: '2rem', fontSize: '1.2rem' }}>
+                                    {activeServiceCategory}
+                                </h3>
+                                <div className="mega-menu-grid">
+                                    {SERVICE_MENU_DATA[activeServiceCategory].map((item, index) => (
+                                        <Link to={item.link} key={index} className="mega-link-item" onClick={closeMenu}>
+                                            <div className="mega-link-title">{item.title}</div>
+                                            <div className="mega-link-desc">{item.desc}</div>
+                                        </Link>
+                                    ))}
+                                </div>
+                                {(() => {
+                                    let hubLink = "/services";
+                                    switch (activeServiceCategory) {
+                                        case "SAP Services":
+                                            hubLink = "/services/sap-services";
+                                            break;
+                                        case "AI & Innovation":
+                                            hubLink = "/services/ai-innovation-services";
+                                            break;
+                                        case "SAP Data Management":
+                                            hubLink = "/services/sap-data-management-hub";
+                                            break;
+                                        case "Software Engineering":
+                                            hubLink = "/services/software-engineering-hub";
+                                            break;
+                                        default:
+                                            hubLink = "/services";
+                                    }
+                                    return (
+                                        <Link to={hubLink} className="mega-menu-footer-link" onClick={closeMenu}>
+                                            ALL {activeServiceCategory} &rarr;
+                                        </Link>
+                                    );
+                                })()}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            )}
         </header>
     );
 };

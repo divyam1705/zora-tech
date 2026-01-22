@@ -2,6 +2,12 @@ import React from 'react';
 import { FaCode, FaLaptopCode, FaCloud, FaApple, FaAndroid, FaGlobe } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+import cardWebDevelopment from '../assets/web-development.jpg';
+import cardAndroidDevelopment from '../assets/Android-development.jpg';
+import cardCloudSoftware from '../assets/card-cloud-software.jpg';
+
+import cardDotNetDevelopment from '../assets/card-dotnet-development.jpg';
+
 const SoftwareEngineeringServices = () => {
     return (
         <div>
@@ -15,6 +21,7 @@ const SoftwareEngineeringServices = () => {
                 overflow: 'hidden',
                 color: '#fff'
             }}>
+                {/* ... (existing hero content) ... */}
                 {/* Background Image with Overlay */}
                 <div style={{
                     position: 'absolute',
@@ -136,7 +143,7 @@ const SoftwareEngineeringServices = () => {
                         {/* Card 1: .NET Development */}
                         <Link to="/services/dotnet-development" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&q=80&w=800"
+                                src={cardDotNetDevelopment}
                                 alt=".NET Development"
                                 style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                             />
@@ -192,7 +199,7 @@ const SoftwareEngineeringServices = () => {
                         {/* Card 3: Cloud Software */}
                         <Link to="/services/cloud-digital-transformation" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
+                                src={cardCloudSoftware}
                                 alt="Cloud Software"
                                 style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                             />
@@ -220,7 +227,7 @@ const SoftwareEngineeringServices = () => {
                         {/* Card 4: Web Development */}
                         <Link to="/services/web-development" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
+                                src={cardWebDevelopment}
                                 alt="Web Development"
                                 style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                             />
@@ -276,7 +283,7 @@ const SoftwareEngineeringServices = () => {
                         {/* Card 6: Android Development */}
                         <Link to="/services/mobile-development" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1551650975-87bd1e887d67?auto=format&fit=crop&q=80&w=800"
+                                src={cardAndroidDevelopment}
                                 alt="Android Development"
                                 style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                             />

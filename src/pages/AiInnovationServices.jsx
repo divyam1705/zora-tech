@@ -2,6 +2,8 @@ import React from 'react';
 import { FaAward, FaHandshake, FaCertificate, FaMedal } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+import cardMedicalDeviceIntegration from '../assets/card-medical-device-integration.jpg';
+
 const AiInnovationServices = () => {
     return (
         <div>
@@ -15,6 +17,7 @@ const AiInnovationServices = () => {
                 overflow: 'hidden',
                 color: '#fff'
             }}>
+                {/* ... (existing hero content) ... */}
                 {/* Background Image with Overlay */}
                 <div style={{
                     position: 'absolute',
@@ -273,7 +276,7 @@ const AiInnovationServices = () => {
                         {/* Card 5: Medical Device Integration */}
                         <Link to="/services/medical-device-integration" className="sap-service-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                                src={cardMedicalDeviceIntegration}
                                 alt="Medical Device Integration"
                                 style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                             />

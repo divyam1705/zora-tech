@@ -46,7 +46,7 @@ import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
-    <Router>
+    <Router basename='/zoratech'>
       <ScrollToTop />
       <div className="bg-grid">
         <Header />

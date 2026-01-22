@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import zoralogo from '/zora-logo.png';
 
 const Footer = () => {
     return (
@@ -232,7 +233,7 @@ const Footer = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <img
-                            src="/zora-logo.png"
+                            src={zoralogo}
                             alt="Zora Logo"
                             style={{ height: '40px', width: 'auto', filter: 'invert(1) brightness(2)', borderRadius: '6px' }}
                         />

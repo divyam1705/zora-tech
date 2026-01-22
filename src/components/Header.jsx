@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes, FaChevronRight } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
+import zoralogo from '/zora-logo.png';
 
 // --- Services Menu Data ---
 const SERVICE_MENU_DATA = {
@@ -118,7 +119,7 @@ const Header = () => {
         <header className="header" onMouseLeave={() => !isMobile && setIsServicesOpen(false)}>
             <div className="container header-container">
                 <div className="logo-container">
-                    <img src="/zora-logo.png" alt="Zora Logo" className="logo-image" />
+                    <img src={zoralogo} alt="Zora Logo" className="logo-image" />
                     <Link to="/" className="logo-text">Zora Technologies</Link>
                 </div>
 

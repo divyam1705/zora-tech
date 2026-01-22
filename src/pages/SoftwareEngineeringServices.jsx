@@ -3,7 +3,7 @@ import { FaCode, FaLaptopCode, FaCloud, FaApple, FaAndroid, FaGlobe } from 'reac
 import { Link } from 'react-router-dom';
 
 import cardWebDevelopment from '../assets/web-development.jpg';
-import cardAndroidDevelopment from '../assets/Android-development.jpg';
+import cardAndroidDevelopment from '../assets/android-development.jpg';
 import cardCloudSoftware from '../assets/card-cloud-software.jpg';
 
 import cardDotNetDevelopment from '../assets/card-dotnet-development.jpg';
